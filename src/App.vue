@@ -1,11 +1,9 @@
 <script setup lang="ts">
-  import Hello from './components/Hello.vue'
+  import Header from './layout/Header.vue';
+  import Sidebar from './layout/Sidebar.vue';
 </script>
 
 <template>
-  <Hello />
-  <i class="pi pi-check"></i>
-  <i class="pi pi-times"></i>
+  <Header />
+  <Sidebar />
 </template>
-
-<style scoped></style>

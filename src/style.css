@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply bg-gray-light;
+}
+
+.container {
+  @apply w-5/6;
+}
+
+.header-nutry {
+  @apply bg-white w-full h-[55px] absolute top-0 z-10;
+}
+
+.sidebar {
+  @apply bg-white w-[55px] h-screen absolute top-0 flex justify-center py-8;
+}
