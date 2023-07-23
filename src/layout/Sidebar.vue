@@ -26,6 +26,6 @@
 
 <style scoped>
   .router-link-active {
-    @apply text-primary rounded-full transition-colors;
+    @apply bg-primary text-white py-1 px-1.5 rounded-md transition-colors;
   }
 </style>

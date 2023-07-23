@@ -6,7 +6,7 @@
 
 <template>
   <header class="header-nutry">
-    <div class="mx-auto px-3 pt-2 flex justify-between">
+    <div class="mx-auto px-3 pt-3 flex justify-between">
       <div>
         <img src="../assets/nutrymix.svg" alt="nutrymix" />
       </div>
@@ -25,5 +25,3 @@
     </div>
   </header>
 </template>
-
-<style scoped></style>
