@@ -1,8 +1,8 @@
 <script setup lang="ts">
   import { useRoute } from 'vue-router'
-  import NameTitle from './components/NameTitle.vue'
-  import Header from './layout/Header.vue'
-  import Sidebar from './layout/Sidebar.vue'
+  import NameTitle from '@/components/NameTitle.vue'
+  import Header from '@/layout/Header.vue'
+  import Sidebar from '@/layout/Sidebar.vue'
 
   const route = useRoute()
 </script>
