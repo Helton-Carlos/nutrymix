@@ -7,7 +7,7 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../pages/Dashboard.vue"),
     meta: {
       title: "Dashboard",
-      subTitle: "Nutrymix",
+      subTitle: "Bem-vindo ao Nutrymix",
     }
   },
   {
@@ -15,7 +15,7 @@ const routes: Array<RouteRecordRaw> = [
     name: "user",
     component: () => import("../pages/User.vue"),
     meta: {
-      title: "usuário/Clintes",
+      title: "Usuário/Clintes",
       subTitle: "Controle de clientes e usuário",
     }
   },
