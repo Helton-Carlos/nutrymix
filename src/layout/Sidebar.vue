@@ -1,29 +1,31 @@
 <script setup lang="ts">
+  import { RouterLink } from 'vue-router'
+
   const router = [
-    { path: '/', icon: 'th-large' },
-    { path: '/', icon: 'user' },
-    { path: '/', icon: 'th-large' },
-    { path: '/', icon: 'calendar-plus' },
-    { path: '/', icon: 'file-o' },
-    { path: '/', icon: 'chevron-circle-left' },
-    { path: '/', icon: 'cog' },
+    { path: '/', icon: 'home' },
+    { path: '/user', icon: 'user' },
+    { path: '/file', icon: 'th-large' },
+    { path: '/calendar', icon: 'calendar-plus' },
+    { path: '/historic', icon: 'filter' },
+    { path: '/contact', icon: 'file-o' },
+    { path: '/config', icon: 'cog' },
   ]
 </script>
 
 <template>
   <div class="sidebar">
-    <div class="mx-auto text-center py-8 mt-4">
-      <i
-        v-for="(routes, index) in router"
-        :key="index"
-        :class="`w-[40px] py-3 pi pi-${routes.icon}`"
-      />
+    <div class="text-center py-8 mt-4">
+      <div v-for="(routes, index) in router" :key="index">
+        <router-link :to="routes.path">
+          <i :class="`cursor-pointer my-4 pi pi-${routes.icon}`"
+        /></router-link>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.router-link-active {
-  @apply bg-primary text-white rounded-full transition-colors
-}
+  .router-link-active {
+    @apply text-primary rounded-full transition-colors;
+  }
 </style>

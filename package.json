@@ -15,7 +15,8 @@
     "@vue/test-utils": "^2.4.1",
     "primeicons": "^6.0.1",
     "save-dev": "^0.0.1-security",
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "vue-router": "^4.0.13"
   },
   "devDependencies": {
     "@types/jest": "^29.5.3",
