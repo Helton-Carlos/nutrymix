@@ -7,7 +7,7 @@
 </script>
 
 <template>
-  <div class="bg-white w-full p-1 border-spacing-1 rounded-lg flex items-start">
+  <div class="card">
     <div class="p-1 pr-2">
       <img
         class="h-8 w-8 rounded-full"
@@ -16,7 +16,7 @@
       />
     </div>
     <div>
-      <p class="text-sm font-semibold" data-test="client">{{ client }}</p>
+      <p class="text-sm font-bold" data-test="client">{{ client }}</p>
       <p class="text-sm font-normal" data-test="type">
         Tipo: <strong>{{ type }}</strong>
       </p>

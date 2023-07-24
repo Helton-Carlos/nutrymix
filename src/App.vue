@@ -20,13 +20,15 @@
             route.meta.title
           }}</span>
         </template>
-        
+
         <template #subTitle>
           <p class="text-sm">{{ route.meta.subTitle }}</p>
         </template>
       </NameTitle>
-
-      <router-view></router-view>
+      
+      <div class="m-4">
+        <router-view></router-view>
+      </div>
     </div>
   </div>
 </template>
