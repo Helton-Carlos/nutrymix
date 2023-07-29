@@ -23,7 +23,7 @@ body {
 
 .card {
   @apply bg-white flex items-start m-0.5 p-1
-    hover:bg-gray-dark hover:text-white ;
+    hover:bg-primary-clear;
 }
 
 .card-dragg {

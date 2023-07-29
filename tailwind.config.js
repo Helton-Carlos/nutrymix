@@ -21,6 +21,7 @@ export default {
     },
     colors: {
       primary: "#5278FF",
+      "primary-clear": "#95ACFF",
       secondary: "#121626",
       warning: "#FF9500",
       error: "#FF2D55",
