@@ -1,15 +1,16 @@
 <script setup lang="ts">
-  import { ref, computed } from 'vue';
-  import CardMain from '@/components/CardMain.vue';
-  import Card from '@/components/Card.vue';
-  import draggable from 'vuedraggable';
+  import { ref, computed } from 'vue'
+  import CardMain from '@/components/CardMain.vue'
+  import Card from '@/components/Card.vue'
+  import Button from '@/components/Button.vue'
+  import draggable from 'vuedraggable'
 
   interface ICards {
     client: string
     type: string
     hour: string
   }
-  const drag = ref<boolean>(false);
+  const drag = ref<boolean>(false)
 
   const dragOptions = computed(() => {
     return {
@@ -18,7 +19,7 @@
       disabled: false,
       ghostClass: 'ghost',
     }
-  });
+  })
 
   const cards = ref<ICards[]>([
     { client: 'Renato Carlos', type: 'dieta', hour: '09:00' },
@@ -28,11 +29,11 @@
     { client: 'Marcos Prado', type: 'atleta', hour: '14:00' },
     { client: 'Wagner Lacerda', type: 'dieta', hour: '13:00' },
     { client: 'Eduardo João', type: 'dieta', hour: '14:00' },
-  ]);
+  ])
 
   const cards2 = ref<ICards[]>([
     { client: 'Newton', type: 'dieta', hour: '09:00' },
-  ]);
+  ])
 </script>
 
 <template>
@@ -109,9 +110,17 @@
       </template>
     </CardMain>
 
-    <CardMain title="Consultas de amanhã">
+    <CardMain class="h-[150px]" title="Cadastro paciênte">
       <template #body>
-        <div>test</div>
+        <div class="card flex-col justify-center">
+          <h3 class="text-sm font-semibold text-center px-4">
+            Cadastre agora o paciente de forma rápida.
+          </h3>
+          <Button color="primary" class="mx-auto my-2">
+            <i class="pi pi-user" />
+            Cadastrar
+          </Button>
+        </div>
       </template>
     </CardMain>
   </div>

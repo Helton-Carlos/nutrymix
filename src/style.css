@@ -22,12 +22,11 @@ body {
 }
 
 .card {
-  @apply bg-white flex items-start m-0.5 p-1
-    hover:bg-primary-clear;
+  @apply bg-white flex items-start m-0.5 p-1;
 }
 
 .card-dragg {
-  @apply w-[270px] bg-gray p-1 rounded-md
+  @apply w-[270px] bg-gray p-1 rounded-md;
 }
 
 .header-nutry {
@@ -36,4 +35,13 @@ body {
 
 .sidebar {
   @apply bg-white w-[55px] h-screen absolute top-0 flex justify-center py-8;
+}
+
+.btn {
+  @apply px-7 py-1 rounded drop-shadow-md font-normal;
+}
+
+.btn-primary {
+  @apply bg-primary text-white px-7 py-1 rounded drop-shadow-md font-normal
+          hover:bg-primary-clear;
 }
