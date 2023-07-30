@@ -29,10 +29,10 @@
           src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
           alt="persona"
         />
-        <div class="cursor-pointer hover:text-primary flex items-center" @click="openMenu">
-          <span class="text-sm font-bold pl-2">{{ name }}</span>
-          <i class="pi pi-angle-down" v-if="!itemMenu"></i>
-          <i class="pi pi-angle-up" v-else></i>
+        <div class="cursor-pointer hover:text-primary flex items-center" data-test="btn-click" @click="openMenu">
+          <span class="text-sm font-bold pl-2" data-test="name">{{ name }}</span>
+          <i class="pi pi-angle-down" data-test="item-menu-down" v-if="!itemMenu"></i>
+          <i class="pi pi-angle-up" data-test="item-menu-up" v-else></i>
         </div>
 
         <div
