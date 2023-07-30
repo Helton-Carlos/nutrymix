@@ -2,6 +2,7 @@
   import { ref, computed } from 'vue'
   import CardMain from '@/components/CardMain.vue'
   import Card from '@/components/Card.vue'
+  import Modal from '@/components/Modal.vue'
   import Button from '@/components/Button.vue'
   import draggable from 'vuedraggable'
 
@@ -10,7 +11,9 @@
     type: string
     hour: string
   }
-  const drag = ref<boolean>(false)
+  
+  const modalRegisterPatient = ref<boolean>(false);
+  const drag = ref<boolean>(false);
 
   const dragOptions = computed(() => {
     return {
@@ -116,12 +119,20 @@
           <h3 class="text-sm font-semibold text-center px-4">
             Cadastre agora o paciente de forma rápida.
           </h3>
-          <Button color="primary" class="mx-auto my-2">
+          <Button color="primary" class="mx-auto my-2" @click="modalRegisterPatient = true">
             <i class="pi pi-user" />
             Cadastrar
           </Button>
         </div>
       </template>
     </CardMain>
+
+    <Modal v-if="modalRegisterPatient">
+      <tempalte>
+       <form @click="modalRegisterPatient = false">
+        <input type="text" placeholder="lorem">
+       </form>
+      </tempalte>
+    </Modal>
   </div>
 </template>
