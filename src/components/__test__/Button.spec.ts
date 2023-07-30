@@ -27,7 +27,7 @@ describe('Button', () => {
     expect(wrapper.text()).toBe('Cadastrar');
   })
 
-  it('renders props title CardMain component', () => {
+  it('renders props color Button component', () => {
     const wrapper = mount(Button, {
       props: {
         color: 'primary',
@@ -35,5 +35,15 @@ describe('Button', () => {
     });
     
     expect(wrapper.classes()).toContain('btn-primary');
+  })
+
+  it('renders emitted Button component',  () => {
+    const wrapper = mount(Button, {
+      props: {
+        color: 'primary',
+      },
+    });
+    
+    expect(wrapper.emitted()).toBeDefined()
   })
 })
