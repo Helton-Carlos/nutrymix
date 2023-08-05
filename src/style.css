@@ -45,3 +45,13 @@ body {
   @apply bg-primary text-white px-7 py-1 rounded drop-shadow-md font-normal
           hover:bg-primary-clear;
 }
+
+.inputOn {
+  @apply w-full my-1 block pl-5 py-2 text-sm text-gray-dark border border-gray-light rounded-lg bg-gray-light 
+    focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40;
+}
+
+.inputOff{
+  @apply w-full my-1 block pl-5 py-2 text-sm text-error border border-gray-light rounded-lg bg-gray-light 
+    focus:border-error ring-error outline-none ring ring-opacity-40;
+}
