@@ -23,7 +23,7 @@ describe('CardMain', () => {
 
     const client = wrapper.get('[data-test="title"]');
 
-    expect(client.html()).toContain('Clientes cadastrados');
+    expect(client.text()).toBe('Clientes cadastrados');
   })
 
   it('renders slots title CardMain component', () => {

@@ -16,7 +16,7 @@ describe('NameTitle', () => {
       }
     })
   
-    expect(wrapper.text()).toContain('Nome titulo');
+    expect(wrapper.text()).toBe('Nome titulo');
   });
 
   it('renders slots subTitle NameTitle component', () => {
@@ -26,6 +26,6 @@ describe('NameTitle', () => {
       }
     })
   
-    expect(wrapper.text()).toContain('Nome subTitle');
+    expect(wrapper.text()).toBe('Nome subTitle');
   });
 })
