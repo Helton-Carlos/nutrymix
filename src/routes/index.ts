@@ -15,7 +15,7 @@ const routes: Array<RouteRecordRaw> = [
     name: "user",
     component: () => import("../pages/User.vue"),
     meta: {
-      title: "Usuário/Clintes",
+      title: "Cadastro de pacientes ",
       subTitle: "Controle de clientes e usuário",
     }
   },
