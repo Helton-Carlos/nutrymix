@@ -1,11 +1,5 @@
 <script setup lang="ts">
-  interface IInput {
-    label?: string
-    placeholder: string
-    type: string
-    modelValue: string | number
-    error?: boolean
-  }
+  import type { IInput } from '../types/index.types';
 
   defineProps<IInput>()
 

@@ -1,17 +1,12 @@
 <script setup lang="ts">
   import { ref, computed } from 'vue'
+  import type { ICards } from '../types/index.types';
   import CardMain from '@/components/CardMain.vue'
   import Card from '@/components/Card.vue'
   import Modal from '@/components/Modal.vue'
   import Input from '@/components/Input.vue'
   import Button from '@/components/Button.vue'
   import draggable from 'vuedraggable'
-
-  interface ICards {
-    client: string
-    type: string
-    hour: string
-  };
 
   const modalRegisterPatient = ref<boolean>(false);
   const drag = ref<boolean>(false);
