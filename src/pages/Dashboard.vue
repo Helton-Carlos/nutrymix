@@ -1,18 +1,40 @@
 <script setup lang="ts">
   import { ref, computed } from 'vue'
-  import type { ICards } from '../types/index.types';
+  import type { ICards } from '../types/index.types'
   import CardMain from '@/components/CardMain.vue'
   import Card from '@/components/Card.vue'
   import Modal from '@/components/Modal.vue'
   import Input from '@/components/Input.vue'
   import Button from '@/components/Button.vue'
+  import Notify from '@/components/Notify.vue'
   import draggable from 'vuedraggable'
 
-  const modalRegisterPatient = ref<boolean>(false);
-  const drag = ref<boolean>(false);
+  const modalRegisterPatient = ref<boolean>(false)
+  const drag = ref<boolean>(false)
+  const errorInput = ref<boolean>(false)
+
+  const name = ref<string>('')
+  const email = ref<string>('')
+  const age = ref<number>()
+  const size = ref<number>()
+  const phone = ref<number>()
+  const height = ref<number>()
+  const pressure = ref<number>()
 
   function saveRegister() {
-    
+    if (
+      name.value &&
+      email.value &&
+      age.value &&
+      size.value &&
+      phone.value &&
+      height.value &&
+      pressure.value
+    ) {
+      alert('Cliente salvo')
+    } else {
+      errorInput.value = true
+    }
   }
 
   const dragOptions = computed(() => {
@@ -22,7 +44,7 @@
       disabled: false,
       ghostClass: 'ghost',
     }
-  });
+  })
 
   const cards = ref<ICards[]>([
     { client: 'Renato Carlos', type: 'dieta', hour: '09:00' },
@@ -32,11 +54,11 @@
     { client: 'Marcos Prado', type: 'atleta', hour: '14:00' },
     { client: 'Wagner Lacerda', type: 'dieta', hour: '13:00' },
     { client: 'Eduardo João', type: 'dieta', hour: '14:00' },
-  ]);
+  ])
 
   const cards2 = ref<ICards[]>([
     { client: 'Newton', type: 'dieta', hour: '09:00' },
-  ]);
+  ])
 </script>
 
 <template>
@@ -134,41 +156,88 @@
     <Modal v-if="modalRegisterPatient">
       <tempalte>
         <form class="flex flex-col p-4" @submit.prevent="saveRegister">
-          <Input type="text" label="Nome" placeholder="Laura Carla Brito" />
+          <Input
+            type="text"
+            label="Nome"
+            placeholder="Laura Carla Brito"
+            :error="errorInput"
+            v-model:modelValue="name"
+          />
 
           <Input
             type="email"
             label="E-mail"
             placeholder="lauracarla@gmail.com"
+            :error="errorInput"
+            v-model:modelValue="email"
           />
 
-          <Input type="number" label="Numero" placeholder="(75) 3281-4022" />
+          <Input
+            type="number"
+            label="Numero"
+            placeholder="(75) 3281-4022"
+            :error="errorInput"
+            v-model:modelValue="phone"
+          />
 
           <div class="flex gap-4">
-            <Input type="number" label="Idade" placeholder="14" />
-            <Input type="number" label="Peso" placeholder="77,14" />
+            <Input
+              type="number"
+              label="Idade"
+              placeholder="14"
+              :error="errorInput"
+              v-model:modelValue="age"
+            />
+            <Input
+              type="number"
+              label="Peso"
+              placeholder="77,14"
+              :error="errorInput"
+              v-model:modelValue="size"
+            />
           </div>
 
           <div class="flex gap-4">
-            <Input type="number" label="Altura" placeholder="1,90" />
-            <Input type="number" label="Pressão arterial" placeholder="12,80" />
+            <Input
+              type="number"
+              label="Altura"
+              placeholder="1,90"
+              :error="errorInput"
+              v-model:modelValue="height"
+            />
+            <Input
+              type="number"
+              label="Pressão arterial"
+              placeholder="12,80"
+              :error="errorInput"
+              v-model:modelValue="pressure"
+            />
           </div>
 
-          <Button
-            color="primary"
-            class="w-full my-4"
-            type="submit"
-          >
+          <Button color="primary" class="w-full my-4" type="submit">
             <i class="pi pi-save" />
             Registar
           </Button>
 
-          <Button class="w-full hover:text-primary" @click="modalRegisterPatient = false">
+          <Button
+            class="w-full hover:text-primary"
+            @click="modalRegisterPatient = false"
+          >
             <i class="pi pi-times" />
             Cancel
           </Button>
         </form>
       </tempalte>
     </Modal>
+
+    <Notify
+      title="Erro"
+      text="Preencha os campos corretamente"
+      v-if="errorInput"
+    >
+      <template #icon>
+        <i class="pi pi-times-circle" />
+      </template>
+    </Notify>
   </div>
 </template>

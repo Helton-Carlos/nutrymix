@@ -11,3 +11,8 @@ export interface ICards {
   type: string
   hour: string
 }
+
+export interface INotify {
+  title: string
+  text: string
+}
