@@ -22,7 +22,7 @@ body {
 }
 
 .card {
-  @apply bg-white flex items-start m-0.5;
+  @apply bg-white flex items-start;
 }
 
 .card-dragg {

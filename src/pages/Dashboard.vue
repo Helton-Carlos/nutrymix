@@ -48,16 +48,16 @@
 
   const cards = ref<ICards[]>([
     { client: 'Renato Carlos', type: 'dieta', hour: '09:00' },
-    { client: 'João Brito', type: 'renal', hour: '10:00' },
-    { client: 'Jose Brito', type: 'diabetico', hour: '11:00' },
-    { client: 'João Walter', type: 'atleta', hour: '12:00' },
+    { client: 'João Altemar', type: 'renal', hour: '10:00' },
+    { client: 'José Brito', type: 'diabetico', hour: '11:00' },
+    { client: 'Francisco Walter', type: 'atleta', hour: '12:00' },
     { client: 'Marcos Prado', type: 'atleta', hour: '14:00' },
   ])
 
   const cards2 = ref<ICards[]>([
-    { client: 'Newton', type: 'dieta', hour: '09:00' },
-    { client: 'João Brito', type: 'renal', hour: '10:00' },
-    { client: 'Jose Brito', type: 'diabetico', hour: '11:00' },
+    { client: 'Newton Própocopio', type: 'dieta', hour: '09:00' },
+    { client: 'Eduardo Fran', type: 'renal', hour: '10:00' },
+    { client: 'Vanderson Nunes', type: 'diabetico', hour: '11:00' },
   ])
 </script>
 
@@ -89,6 +89,7 @@
                 aria-hidden="true"
               ></i>
               <Card
+                class="m-0.5"
                 :client="element.client"
                 :type="element.type"
                 :hour="element.hour"
@@ -125,6 +126,7 @@
                 aria-hidden="true"
               ></i>
               <Card
+                class="m-0.5"
                 :client="element.client"
                 :type="element.type"
                 :hour="element.hour"

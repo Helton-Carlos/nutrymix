@@ -1,36 +1,47 @@
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import { ref, watch } from 'vue'
   import Table from '../components/Table.vue'
 
   const search = ref<number | string>('')
 
   const rows = ['Nome', 'C.P.F', 'Dieta', 'Peso']
 
-  const columns = [
+  const columns = ref<any[]>([])
+
+  const mock = [
     {
-      name: 'Carlos Brito',
+      name: 'carlos brito',
       cpf: '025.255.855-33',
-      dieta: 'Perda de gordura',
+      dieta: 'perda de gordura',
       peso: '115,45',
     },
     {
-      name: 'Jose Brito',
+      name: 'jose brito',
       cpf: '033.277.437-02',
-      dieta: 'Atleta',
+      dieta: 'atleta',
       peso: '85,75',
     },
   ]
+
+  function getColumns() {
+    if (search.value) {
+      const column = mock.filter(({ name }) =>
+        name.includes(search.value.toString().toLowerCase())
+      )
+      return (columns.value = column)
+    }
+
+    return (columns.value = [])
+  }
+
+  watch(search, getColumns)
 </script>
 
 <template>
   <div class="flex flex-col p-4">
-    <div class="card p-4">
-      <input
-        type="text"
-        placeholder="pesquisa de pacientes"
-        v-model="search"
-        class="input-on"
-      />
+    <div class="card p-2 flex-col">
+      <label class="text-sm font-semibold pl-1">Digite o nome do(a) paciente:</label>
+      <input type="text" placeholder="" v-model="search" class="input-on" />
     </div>
 
     <Table class="mt-4" :row="rows" :column="columns" />
