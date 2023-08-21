@@ -19,7 +19,7 @@
   <header class="header-nutry">
     <div class="mx-auto px-3 pt-3 flex justify-between">
       <div class="flex items-center">
-        <img src="../assets/nutrymix.svg" alt="nutrymix" />
+        <img src="@/assets/nutrymix.svg" alt="nutrymix" />
         <h1 class="pl-1 text-base font-bold capitalize">Nutrymix</h1>
       </div>
 

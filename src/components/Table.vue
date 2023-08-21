@@ -9,14 +9,23 @@
     <div class="p-2">
       <thead class="text-xs text-black uppercase">
         <tr>
-          <th scope="col" class="px-9 inline-block" v-for="rows in props.row">
+          <th
+            scope="col"
+            class="px-9 inline-block"
+            v-for="rows in props.row"
+            data-test="row"
+          >
             {{ rows }}
           </th>
         </tr>
       </thead>
       <tbody>
         <div>
-          <tr class="border-b" v-for="columns in props.column">
+          <tr
+            class="border-b"
+            v-for="columns in props.column"
+            data-test="column"
+          >
             <td class="px-2 py-3 font-bold text-black capitalize">
               {{ columns.name }}
             </td>

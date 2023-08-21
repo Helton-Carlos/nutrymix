@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import { ref, watch } from 'vue'
-  import Table from '../components/Table.vue'
+  import Table from '@/components/Table.vue'
 
   const search = ref<number | string>('')
 
