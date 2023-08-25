@@ -1,9 +1,7 @@
 <script setup lang="ts">
-  defineProps<{
-    client: string
-    type: string
-    hour: string
-  }>()
+  import type { ICards } from '../types/index.types'
+
+  defineProps<ICards>()
 </script>
 
 <template>
