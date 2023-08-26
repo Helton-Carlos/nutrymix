@@ -1,14 +1,14 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
+  import { ref } from 'vue'
 
-  const name = ref<string>('John Smith');
-  const itemMenu = ref<boolean>(false);
- 
+  const name = ref<string>('John Smith')
+  const itemMenu = ref<boolean>(false)
+
   const menu = [
     { name: 'Your Profile', path: 'profile' },
     { name: 'Settings', path: 'config' },
     { name: 'Sign out', path: 'singIn' },
-  ];
+  ]
 
   function openMenu() {
     itemMenu.value = !itemMenu.value
@@ -18,7 +18,10 @@
 <template>
   <header class="header-nutry">
     <div class="mx-auto px-3 pt-3 flex justify-between">
-      <div class="flex items-center">
+      <div
+        class="flex items-center cursor-pointer"
+        @click="$emit('openSidebar')"
+      >
         <img src="@/assets/nutrymix.svg" alt="nutrymix" />
         <h1 class="pl-1 text-base font-bold capitalize">Nutrymix</h1>
       </div>
@@ -29,9 +32,19 @@
           src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
           alt="persona"
         />
-        <div class="cursor-pointer hover:text-primary flex items-center" data-test="btn-click" @click="openMenu">
-          <span class="text-sm font-bold pl-2" data-test="name">{{ name }}</span>
-          <i class="pi pi-angle-down" data-test="item-menu-down" v-if="!itemMenu"></i>
+        <div
+          class="cursor-pointer hover:text-primary flex items-center"
+          data-test="btn-click"
+          @click="openMenu"
+        >
+          <span class="text-sm font-bold pl-2" data-test="name">{{
+            name
+          }}</span>
+          <i
+            class="pi pi-angle-down"
+            data-test="item-menu-down"
+            v-if="!itemMenu"
+          ></i>
           <i class="pi pi-angle-up" data-test="item-menu-up" v-else></i>
         </div>
 
@@ -49,7 +62,8 @@
             role="menuitem"
             tabindex="-1"
             id="user-menu-item-0"
-            v-for="(item, index) in menu" :key="index"
+            v-for="(item, index) in menu"
+            :key="index"
             >{{ item.name }}</a
           >
         </div>

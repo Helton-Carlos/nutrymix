@@ -5,13 +5,16 @@
   import Sidebar from '@/layout/Sidebar.vue'
 
   const route = useRoute()
+
+  function openSidebar() {
+    alert('hey')
+  }
 </script>
 
 <template>
-  <Header />
+  <Header @open-sidebar="openSidebar" />
   <div class="flex">
     <Sidebar />
-
     <div class="m-14">
       <NameTitle>
         <template #title>
@@ -20,7 +23,6 @@
             route.meta.title
           }}</span>
         </template>
-
         <template #subTitle>
           <p class="text-sm">{{ route.meta.subTitle }}</p>
         </template>

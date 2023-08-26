@@ -9,7 +9,7 @@
   onMounted(() => {
     setTimeout(() => {
       close.value = false
-    }, 3000)
+    }, 2500)
   })
 </script>
 
@@ -23,7 +23,7 @@
 
       <div class="text-left">
         <p class="font-bold">{{ title }}</p>
-        <p>{{ text }}</p>
+        <span>{{ text }}</span>
       </div>
     </div>
   </div>

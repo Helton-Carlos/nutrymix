@@ -62,7 +62,7 @@
 </script>
 
 <template>
-  <div class="flex gap-4">
+  <div class="flex flex-wrap gap-4">
     <CardMain title="Consultas de hoje">
       <template #body>
         <draggable
@@ -233,8 +233,8 @@
     </Modal>
 
     <Notify
-      title="Erro"
-      text="Preencha os campos corretamente"
+      title="Erro ao cadastrar."
+      text="Preencha os campos corretamente."
       v-if="errorInput"
     >
       <template #icon>

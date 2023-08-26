@@ -14,12 +14,12 @@
       />
     </div>
     <div>
-      <p class="text-sm font-bold" data-test="client">{{ client }}</p>
+      <p class="text-sm font-semibold" data-test="client">{{ client }}</p>
       <p class="text-sm font-normal" data-test="type">
-        Tipo: <strong>{{ type }}</strong>
+        Tipo: <span class="font-semibold capitalize">{{ type }}</span>
       </p>
       <p class="text-sm font-normal" data-test="hour">
-        Horas: <strong>{{ hour }}</strong>
+        Horas: <span class="font-semibold capitalize">{{ hour }}</span>
       </p>
     </div>
   </div>
