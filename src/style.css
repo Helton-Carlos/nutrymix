@@ -46,7 +46,7 @@ body {
 }
 
 .btn-primary {
-  @apply bg-primary text-white px-7 py-1 rounded drop-shadow-md font-normal
+  @apply bg-primary text-white px-7 py-1 rounded drop-shadow-sm font-normal
           hover:bg-primary-clear;
 }
 

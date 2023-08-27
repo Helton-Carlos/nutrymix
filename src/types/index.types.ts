@@ -28,3 +28,13 @@ export interface ITable {
   row: string[]
   column: IColumn[]
 }
+
+export interface IUser {
+  name: string,
+  email?: string,
+  age: number | undefined,
+  size: number | undefined,
+  phone: number | undefined,
+  height: number | undefined,
+  pressure: number| undefined,
+}
