@@ -17,12 +17,14 @@ export interface INotify {
   text: string
 }
 
+export interface IColumn {
+  name: string
+  cpf: string
+  dieta: string
+  peso: string
+}
+
 export interface ITable {
   row: string[]
-  column: {
-    name: string
-    cpf: string
-    dieta: string
-    peso: string
-  }[]
+  column: IColumn[]
 }

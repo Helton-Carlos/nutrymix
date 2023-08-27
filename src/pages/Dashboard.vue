@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref, computed } from 'vue'
+  import { ref, computed, watch } from 'vue'
   import type { ICards } from '../types/index.types'
   import CardMain from '@/components/CardMain.vue'
   import Card from '@/components/Card.vue'
@@ -20,22 +20,6 @@
   const phone = ref<number>()
   const height = ref<number>()
   const pressure = ref<number>()
-
-  function saveRegister() {
-    if (
-      name.value &&
-      email.value &&
-      age.value &&
-      size.value &&
-      phone.value &&
-      height.value &&
-      pressure.value
-    ) {
-      alert('Cliente salvo')
-    } else {
-      errorInput.value = true
-    }
-  }
 
   const dragOptions = computed(() => {
     return {
@@ -59,6 +43,28 @@
     { client: 'Eduardo França', type: 'renal', hour: '10:00' },
     { client: 'Vanderson Nunes', type: 'diabetico', hour: '11:00' },
   ])
+
+  function saveRegister() {
+    if (
+      name.value &&
+      email.value &&
+      age.value &&
+      size.value &&
+      phone.value &&
+      height.value &&
+      pressure.value
+    ) {
+      alert('Cliente salvo')
+    } else {
+      errorInput.value = true
+    }
+  }
+
+  function cleanErro() {
+    errorInput.value = false
+  }
+
+  watch(name, cleanErro)
 </script>
 
 <template>

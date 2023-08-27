@@ -1,22 +1,23 @@
 <script setup lang="ts">
   import { ref, watch } from 'vue'
+  import { IColumn } from '../types/index.types'
   import Table from '@/components/Table.vue'
 
   const search = ref<number | string>('')
 
   const rows = ['Nome', 'C.P.F', 'Dieta', 'Peso']
 
-  const columns = ref<any[]>([])
+  const columns = ref<IColumn[]>([])
 
   const mock = [
     {
       name: 'carlos brito',
       cpf: '025.255.855-33',
-      dieta: 'perda de gordura',
+      dieta: 'dieta',
       peso: '115,45',
     },
     {
-      name: 'jose brito',
+      name: 'jose souza',
       cpf: '033.277.437-02',
       dieta: 'atleta',
       peso: '85,75',
@@ -40,7 +41,9 @@
 <template>
   <div class="flex flex-col p-4">
     <div class="card p-2 flex-col">
-      <label class="text-sm font-semibold pl-1">Digite o nome do(a) paciente:</label>
+      <label class="text-sm font-semibold pl-1"
+        >Digite o nome do(a) paciente:</label
+      >
       <input type="text" placeholder="" v-model="search" class="input-on" />
     </div>
 

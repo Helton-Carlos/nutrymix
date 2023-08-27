@@ -31,8 +31,8 @@
               {{ columns.name }}
             </td>
             <td class="px-4 py-3">{{ columns.cpf }}</td>
-            <td class="px-1 py-3 capitalize">{{ columns.dieta }}</td>
-            <td class="px-4 py-3">{{ columns.peso }} Kg</td>
+            <td class="px-8 py-3 capitalize">{{ columns.dieta }}</td>
+            <td class="px-7 py-3">{{ columns.peso }} Kg</td>
           </tr>
         </div>
       </tbody>
