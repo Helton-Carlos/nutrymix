@@ -2,6 +2,8 @@
   import { RouterLink } from 'vue-router'
   import { breakpoints } from '@/use/breakpoints.use'
 
+  defineProps<{ menuMobile: boolean }>()
+
   const { xs } = breakpoints()
 
   const router = [
@@ -28,12 +30,12 @@
 
   <div
     class="absolute z-10 top-0 right-0 min-w-full min-h-screen bg-secondary bg-opacity-75 transition-opacity"
-    v-else
+    v-if="xs && menuMobile"
   >
     <div class="sidebar-mobile">
       <div class="text-left py-8 mt-4">
         <div v-for="routes in router" :key="routes.name">
-          <router-link :to="routes.path">
+          <router-link :to="routes.path" @click="$emit('closeMenu')">
             <i :class="`cursor-pointer pr-2 my-4 pi pi-${routes.icon}`" />
             <span class="capitalize font-semibold">{{
               routes.name

@@ -9,7 +9,7 @@
   onMounted(() => {
     setTimeout(() => {
       close.value = false
-    }, 2500)
+    }, 3000)
   })
 </script>
 

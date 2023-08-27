@@ -55,8 +55,8 @@
   ])
 
   const cards2 = ref<ICards[]>([
-    { client: 'Newton Própocopio', type: 'dieta', hour: '09:00' },
-    { client: 'Eduardo Fran', type: 'renal', hour: '10:00' },
+    { client: 'Newton Prócopio', type: 'dieta', hour: '09:00' },
+    { client: 'Eduardo França', type: 'renal', hour: '10:00' },
     { client: 'Vanderson Nunes', type: 'diabetico', hour: '11:00' },
   ])
 </script>

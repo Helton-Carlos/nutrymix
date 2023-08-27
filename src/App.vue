@@ -1,21 +1,27 @@
 <script setup lang="ts">
+  import { ref } from 'vue'
   import { useRoute } from 'vue-router'
   import NameTitle from '@/components/NameTitle.vue'
   import Header from '@/layout/Header.vue'
   import Sidebar from '@/layout/Sidebar.vue'
+  import { breakpoints } from '@/use/breakpoints.use'
 
   const route = useRoute()
+  const { xs } = breakpoints()
+
+  const menuMobile = ref<boolean>(false)
 
   function openSidebar() {
-    alert('hey')
+    menuMobile.value = !menuMobile.value
   }
 </script>
 
 <template>
   <Header @open-sidebar="openSidebar" />
   <div class="flex">
-    <Sidebar />
-    <div class="m-14">
+    <Sidebar @close-menu="openSidebar" :menuMobile="menuMobile" />
+
+    <div :class="xs ? 'mt-14' : 'm-14'">
       <NameTitle>
         <template #title>
           <span class="bg-primary rounded-full pr-1 mr-1"></span>
