@@ -18,7 +18,7 @@
 <template>
   <div class="sidebar-desktop" v-if="!xs">
     <div class="text-center py-8 mt-4">
-      <div v-for="(routes, index) in router" :key="index">
+      <div v-for="routes in router" :key="routes.name">
         <router-link :to="routes.path">
           <i :class="`cursor-pointer my-4 pi pi-${routes.icon}`"
         /></router-link>
@@ -32,7 +32,7 @@
   >
     <div class="sidebar-mobile">
       <div class="text-left py-8 mt-4">
-        <div v-for="(routes, index) in router" :key="index">
+        <div v-for="routes in router" :key="routes.name">
           <router-link :to="routes.path">
             <i :class="`cursor-pointer pr-2 my-4 pi pi-${routes.icon}`" />
             <span class="capitalize font-semibold">{{

@@ -13,6 +13,7 @@
             scope="col"
             class="px-9 inline-block"
             v-for="rows in props.row"
+            :key="rows"
             data-test="row"
           >
             {{ rows }}

@@ -62,8 +62,8 @@
             role="menuitem"
             tabindex="-1"
             id="user-menu-item-0"
-            v-for="(item, index) in menu"
-            :key="index"
+            v-for="item in menu"
+            :key="item.name"
             >{{ item.name }}</a
           >
         </div>
