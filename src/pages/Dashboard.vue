@@ -137,10 +137,10 @@
       </template>
     </CardMain>
 
-    <CardMain class="h-[150px]" title="Cadastro paciênte">
+    <CardMain class="h-[155px]" title="Cadastro paciênte">
       <template #body>
-        <div class="card flex-col justify-center">
-          <h3 class="text-sm font-semibold text-center px-4">
+        <div class="card flex-col">
+          <h3 class="text-sm font-semibold text-center px-4 pt-2">
             Cadastre agora o paciente de forma rápida.
           </h3>
           <Button

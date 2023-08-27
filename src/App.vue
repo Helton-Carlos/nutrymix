@@ -14,12 +14,16 @@
   function openSidebar() {
     menuMobile.value = !menuMobile.value
   }
+
+  function closeSidebar() {
+    menuMobile.value = false
+  }
 </script>
 
 <template>
   <Header @open-sidebar="openSidebar" />
   <div class="flex">
-    <Sidebar @close-menu="openSidebar" :menuMobile="menuMobile" />
+    <Sidebar @close-menu="closeSidebar" :menuMobile="menuMobile" />
 
     <div :class="xs ? 'mt-14' : 'm-14'">
       <NameTitle>
