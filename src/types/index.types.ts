@@ -17,24 +17,19 @@ export interface INotify {
   text: string
 }
 
-export interface IColumn {
-  name: string
-  cpf: string
-  dieta: string
-  peso: string
-}
-
 export interface ITable {
   row: string[]
-  column: IColumn[]
+  column: IUser[]
 }
 
 export interface IUser {
   name: string,
+  cpf: string,
   email?: string,
+  phone: number | undefined,
   age: number | undefined,
   size: number | undefined,
-  phone: number | undefined,
   height: number | undefined,
   pressure: number| undefined,
+  diet: string
 }

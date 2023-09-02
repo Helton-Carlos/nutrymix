@@ -2,14 +2,24 @@ const user = [
   {
     name: 'carlos brito',
     cpf: '025.255.855-33',
-    dieta: 'dieta',
-    peso: '115,45',
+    email: 'carlosbrito@gmail.com',
+    phone: 7598885555,
+    age: 22,
+    size: 115.45,
+    height: 1.80,
+    pressure: 12.8,
+    diet: 'dieta'
   },
   {
     name: 'jose souza',
     cpf: '033.277.437-02',
-    dieta: 'atleta',
-    peso: '85,75',
+    email: 'carlosbrito@gmail.com',
+    phone: 7598885555,
+    age: 27,
+    size: 85.05,
+    height: 1.80,
+    pressure: 12.8,
+    diet: 'atleta'
   },
 ]
 

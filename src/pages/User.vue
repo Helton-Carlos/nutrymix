@@ -1,15 +1,15 @@
 <script setup lang="ts">
   import { ref, onMounted, watch } from 'vue'
-  import { IColumn } from '../types/index.types'
+  import { IUser } from '../types/index.types'
   import Table from '@/components/Table.vue'
+  import axios from 'axios'
 
   const search = ref<number | string>('')
 
   const rows = ['Nome', 'C.P.F', 'Dieta', 'Peso']
 
-  const columns = ref<IColumn[]>([])
-
-  const users = ref<any[]>([])
+  const columns = ref<IUser[]>([])
+  const users = ref<IUser[]>([])
 
   function getColumns() {
     if (search.value) {
@@ -23,11 +23,9 @@
   }
 
   onMounted(() => {
-    fetch('/api/users')
-      .then((res) => res.json())
-      .then((json) => {
-        users.value = json
-      })
+    axios.get('/api/users').then((response) => {
+      users.value = response.data
+    })
   })
 
   watch(search, getColumns)
