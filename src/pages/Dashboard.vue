@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref, computed, watch } from 'vue'
+  import { ref, computed, watch, onMounted } from 'vue'
   import type { ICards } from '../types/index.types'
   import CardMain from '@/components/CardMain.vue'
   import Card from '@/components/Card.vue'
@@ -12,6 +12,8 @@
   const modalRegisterPatient = ref<boolean>(false)
   const drag = ref<boolean>(false)
   const errorInput = ref<boolean>(false)
+
+  const users = ref<any[]>([])
 
   const name = ref<string>('')
   const email = ref<string>('')
@@ -64,11 +66,20 @@
     errorInput.value = false
   }
 
+  onMounted(() => {
+    fetch('/api/users')
+      .then((res) => res.json())
+      .then((json) => {
+        users.value = json
+      })
+  })
+
   watch(name, cleanErro)
 </script>
 
 <template>
   <div class="flex flex-wrap gap-4">
+    {{ users }}
     <CardMain title="Consultas de hoje">
       <template #body>
         <draggable
