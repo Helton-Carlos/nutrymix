@@ -1,32 +1,34 @@
 <script setup lang="ts">
-  import { ref, onMounted, watch } from 'vue'
+  import { ref, watch } from 'vue'
   import { IUser } from '../types/index.types'
-  import Table from '@/components/Table.vue'
   import axios from 'axios'
+  import Table from '@/components/Table.vue'
 
   const search = ref<number | string>('')
+  const columns = ref<IUser[]>([])
 
   const rows = ['Nome', 'C.P.F', 'Dieta', 'Peso']
 
-  const columns = ref<IUser[]>([])
-  const users = ref<IUser[]>([])
-
   function getColumns() {
     if (search.value) {
-      const column = users.value.filter(({ name }) =>
-        name.includes(search.value.toString().toLowerCase())
-      )
-      return (columns.value = column)
+      axios
+        .get('/api/users')
+        .then((response) => {
+          const users: IUser[] = response.data
+
+          const column = users.filter(({ name }) =>
+            name.includes(search.value.toString().toLowerCase())
+          )
+
+          return (columns.value = column)
+        })
+        .catch((error) => {
+          console.error(error)
+        })
     }
 
     return (columns.value = [])
   }
-
-  onMounted(() => {
-    axios.get('/api/users').then((response) => {
-      users.value = response.data
-    })
-  })
 
   watch(search, getColumns)
 </script>

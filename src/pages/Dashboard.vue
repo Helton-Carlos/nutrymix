@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { ref, computed, watch } from 'vue'
   import type { ICards } from '../types/index.types'
+  import axios from 'axios'
   import CardMain from '@/components/CardMain.vue'
   import Card from '@/components/Card.vue'
   import Modal from '@/components/Modal.vue'
@@ -54,7 +55,22 @@
       height.value &&
       pressure.value
     ) {
-      alert('Cliente salvo')
+      axios
+        .post('/api/users', {
+          name,
+          email,
+          age,
+          size,
+          phone,
+          height,
+          pressure,
+        })
+        .then((response) => {
+          if (response) return (modalRegisterPatient.value = false)
+        })
+        .catch((error) => {
+          console.error(error)
+        })
     } else {
       errorInput.value = true
     }

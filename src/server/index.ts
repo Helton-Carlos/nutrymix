@@ -9,6 +9,15 @@ export function makeServer({ environment = "development" } = {}) {
       this.namespace = "api"
 
       this.get("/users", () => user)
+
+      let newId = 4
+      this.post("/users", (schema, request) => {
+        let attrs = JSON.parse(request.requestBody)
+        attrs.id = newId++
+        console.log(schema);
+        
+        return { reminder: attrs }
+      })
     },
   })
 
