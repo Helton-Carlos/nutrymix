@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref, watch } from 'vue'
+  import { ref, onMounted, watch } from 'vue'
   import { IColumn } from '../types/index.types'
   import Table from '@/components/Table.vue'
 
@@ -9,24 +9,11 @@
 
   const columns = ref<IColumn[]>([])
 
-  const mock = [
-    {
-      name: 'carlos brito',
-      cpf: '025.255.855-33',
-      dieta: 'dieta',
-      peso: '115,45',
-    },
-    {
-      name: 'jose souza',
-      cpf: '033.277.437-02',
-      dieta: 'atleta',
-      peso: '85,75',
-    },
-  ]
+  const users = ref<any[]>([])
 
   function getColumns() {
     if (search.value) {
-      const column = mock.filter(({ name }) =>
+      const column = users.value.filter(({ name }) =>
         name.includes(search.value.toString().toLowerCase())
       )
       return (columns.value = column)
@@ -34,6 +21,14 @@
 
     return (columns.value = [])
   }
+
+  onMounted(() => {
+    fetch('/api/users')
+      .then((res) => res.json())
+      .then((json) => {
+        users.value = json
+      })
+  })
 
   watch(search, getColumns)
 </script>
