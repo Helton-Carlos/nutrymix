@@ -10,13 +10,13 @@ export function makeServer({ environment = "development" } = {}) {
 
       this.get("/users", () => user)
 
-      let newId = 4
+      let id = 0
       this.post("/users", (schema, request) => {
         let attrs = JSON.parse(request.requestBody)
-        attrs.id = newId++
+        attrs.id = id++
         console.log(schema);
         
-        return { reminder: attrs }
+        return { user: attrs }
       })
     },
   })
