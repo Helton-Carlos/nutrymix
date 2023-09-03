@@ -173,7 +173,7 @@
     <CardMain class="h-[155px]" title="Cadastro paciênte">
       <template #body>
         <div class="card flex-col">
-          <h3 class="text-sm font-semibold text-center px-4 pt-2">
+          <h3 class="text-sm font-semibold pt-2 mx-auto text-center md:px-4">
             Cadastre agora o paciente de forma rápida.
           </h3>
           <Button
