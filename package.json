@@ -14,11 +14,13 @@
   "dependencies": {
     "@vue/test-utils": "^2.4.1",
     "@vueuse/core": "^10.4.0",
+    "apexcharts": "^3.42.0",
     "axios": "^1.5.0",
     "primeicons": "^6.0.1",
     "save-dev": "^0.0.1-security",
     "vue": "^3.3.4",
     "vue-router": "^4.0.13",
+    "vue3-apexcharts": "^1.4.4",
     "vuedraggable": "^4.1.0"
   },
   "devDependencies": {

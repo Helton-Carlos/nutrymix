@@ -14,7 +14,6 @@ export function makeServer({ environment = "development" } = {}) {
       this.post("/users", (schema, request) => {
         let attrs = JSON.parse(request.requestBody)
         attrs.id = id++
-        console.log(schema);
         
         return { user: attrs }
       })
