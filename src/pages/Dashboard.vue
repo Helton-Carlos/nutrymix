@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { ref, computed, watch } from 'vue'
   import type { ICards } from '../types/index.types'
+  import { columnCharts, polarAreaCharts} from '../use/charts'
   import axios from 'axios'
   import CardMain from '@/components/CardMain.vue'
   import Card from '@/components/Card.vue'
@@ -88,7 +89,19 @@
 
 <template>
   <div class="flex flex-wrap gap-4">
-    <Charts />
+    <Charts 
+      type="bar"
+      title="Gráfico semanal"
+      :series="columnCharts().series" 
+      :chartOptions="columnCharts().chartOptions"
+    />
+
+    <Charts 
+      type="polarArea"
+      title="Maior fluxo semanal"
+      :series="polarAreaCharts().series" 
+      :chartOptions="polarAreaCharts().chartOptions"
+    />
 
     <div class="flex gap-4 w-full md:w-[550px]">
       <CardMain title="Consultas de hoje">
