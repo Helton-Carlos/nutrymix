@@ -176,13 +176,14 @@
           <h3 class="text-sm font-semibold pt-2 mx-auto text-center md:px-4">
             Cadastre agora o paciente de forma rápida.
           </h3>
+
           <Button
             color="primary"
-            class="mx-auto my-2"
+            class="mx-auto my-2 flex gap-1 items-center"
             @click="modalRegisterPatient = true"
           >
             <i class="pi pi-user" />
-            Cadastrar
+            <p>Cadastrar</p>
           </Button>
         </div>
       </template>
