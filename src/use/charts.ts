@@ -1,4 +1,4 @@
-export function columnCharts() {
+export function columnWeekCharts() {
   const series = [
     {
       name: 'Marcadas',
@@ -17,7 +17,6 @@ export function columnCharts() {
   const chartOptions = {
     chart: {
       type: 'bar',
-      height: 350,
     },
     plotOptions: {
       bar: {
@@ -48,31 +47,31 @@ export function columnCharts() {
   };
 }
 
-export function polarAreaCharts() {
-  const series = [17, 14, 12, 11, 15,2];
-
+export function columnYearCharts() {
+  const series = [
+    {
+      data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1080, 1200, 800, 1104]
+    }
+  ]
+ 
   const chartOptions = {
-      chart: {
-        type: 'polarArea',
-      },
-      stroke: {
-        colors: ['#fff']
-      },
-      fill: {
-        opacity: 0.8
-      },
-      labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
-      responsive: [{
-        breakpoint: 480,
-        options: {
-          chart: {
-            width: 200
-          },
-          legend: {
-            position: 'bottom'
-          }
-        }
-      }]
+    chart: {
+      type: 'bar',
+    },
+    plotOptions: {
+      bar: {
+        borderRadius: 4,
+        horizontal: true,
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    xaxis: {
+      categories: ['Jan', 'Fev', 'Mar', 'Abri', 'Mai', 'Jun', 'Jul',
+        'Ago', 'Set', 'Out', 'Nov', 'Dez'
+      ],
+    }
   }
 
   return {

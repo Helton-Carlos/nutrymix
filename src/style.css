@@ -26,7 +26,7 @@ body {
 }
 
 .card-main {
-  @apply w-full h-full bg-gray p-1 rounded-md md:w-[270px];
+  @apply w-full h-full bg-gray p-1 rounded-md md:w-[410px];
 }
 
 .header-nutry {

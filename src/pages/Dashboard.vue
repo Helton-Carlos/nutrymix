@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { ref, computed, watch } from 'vue'
   import type { ICards } from '../types/index.types'
-  import { columnCharts, polarAreaCharts} from '../use/charts'
+  import { columnWeekCharts, columnYearCharts} from '../use/charts'
   import axios from 'axios'
   import CardMain from '@/components/CardMain.vue'
   import Card from '@/components/Card.vue'
@@ -88,119 +88,138 @@
 </script>
 
 <template>
-  <div class="flex flex-wrap gap-4">
-    <Charts 
-      type="bar"
-      title="Gráfico semanal"
-      :series="columnCharts().series" 
-      :chartOptions="columnCharts().chartOptions"
-    />
+  <div class="flex flex-col flex-wrap gap-4">
+    <div class="flex flex-wrap gap-4">
+      <Charts 
+        type="bar"
+        title="Gráfico semanal atual"
+        :series="columnWeekCharts().series" 
+        :chartOptions="columnWeekCharts().chartOptions"
+      />
 
-    <Charts 
-      type="polarArea"
-      title="Maior fluxo semanal"
-      :series="polarAreaCharts().series" 
-      :chartOptions="polarAreaCharts().chartOptions"
-    />
+      <Charts 
+        type="bar" 
+        title="Gráfico anual atual"
+        :series="columnYearCharts().series" 
+        :chartOptions="columnYearCharts().chartOptions"
+      />
 
-    <div class="flex gap-4 w-full md:w-[550px]">
-      <CardMain title="Consultas de hoje">
-        <template #body>
-          <draggable
-            class="list-group"
-            tag="transition-group"
-            :component-data="{
-              tag: 'ul',
-              type: 'transition-group',
-              name: !drag ? 'flip-list' : null,
-            }"
-            v-model="cards"
-            v-bind="dragOptions"
-            @start="drag = true"
-            @end="drag = false"
-            item-key="order"
-          >
-            <template #item="{ element }">
-              <li class="list-group-item">
-                <i
-                  :class="
-                    element.fixed
-                      ? 'fa fa-anchor'
-                      : 'glyphicon glyphicon-pushpin'
-                  "
-                  @click="element.fixed = !element.fixed"
-                  aria-hidden="true"
-                ></i>
-                <Card
-                  class="m-0.5"
-                  :client="element.client"
-                  :type="element.type"
-                  :hour="element.hour"
-                />
-              </li>
-            </template>
-          </draggable>
-        </template>
-      </CardMain>
+      <Charts 
+        type="bar"
+        title="Gráfico semanal passado"
+        :series="columnWeekCharts().series" 
+        :chartOptions="columnWeekCharts().chartOptions"
+      />
 
-      <CardMain title="Consultas de amanhã">
-        <template #body>
-          <draggable
-            class="list-group"
-            tag="transition-group"
-            :component-data="{
-              tag: 'ul',
-              type: 'transition-group',
-              name: !drag ? 'flip-list' : null,
-            }"
-            v-model="cards2"
-            v-bind="dragOptions"
-            @start="drag = true"
-            @end="drag = false"
-            item-key="order"
-          >
-            <template #item="{ element }">
-              <li class="list-group-item">
-                <i
-                  :class="
-                    element.fixed
-                      ? 'fa fa-anchor'
-                      : 'glyphicon glyphicon-pushpin'
-                  "
-                  @click="element.fixed = !element.fixed"
-                  aria-hidden="true"
-                ></i>
-                <Card
-                  class="m-0.5"
-                  :client="element.client"
-                  :type="element.type"
-                  :hour="element.hour"
-                />
-              </li>
-            </template>
-          </draggable>
-        </template>
-      </CardMain>
+      <Charts 
+        type="bar"
+        title="Gráfico anual passado"
+        :series="columnYearCharts().series" 
+        :chartOptions="columnYearCharts().chartOptions"
+      />
+      
     </div>
 
-    <CardMain class="h-[155px]" title="Cadastro paciênte">
-      <template #body>
-        <div class="card flex-col">
-          <h3 class="text-sm font-semibold pt-2 mx-auto text-center md:px-4">
-            Cadastre agora o paciente de forma rápida.
-          </h3>
+    <div class="flex flex-wrap gap-4">
+      <div class="flex gap-4 w-full md:w-[550px]">
+        <card-main title="Consultas de hoje">
+          <template #body>
+            <draggable
+              class="list-group"
+              tag="transition-group"
+              :component-data="{
+                tag: 'ul',
+                type: 'transition-group',
+                name: !drag ? 'flip-list' : null,
+              }"
+              v-model="cards"
+              v-bind="dragOptions"
+              @start="drag = true"
+              @end="drag = false"
+              item-key="order"
+            >
+              <template #item="{ element }">
+                <li class="list-group-item">
+                  <i
+                    :class="
+                      element.fixed
+                        ? 'fa fa-anchor'
+                        : 'glyphicon glyphicon-pushpin'
+                    "
+                    @click="element.fixed = !element.fixed"
+                    aria-hidden="true"
+                  ></i>
+                  <Card
+                    class="m-0.5"
+                    :client="element.client"
+                    :type="element.type"
+                    :hour="element.hour"
+                  />
+                </li>
+              </template>
+            </draggable>
+          </template>
+        </card-main>
 
-          <Button
-            color="primary"
-            class="mx-auto my-2 flex gap-1 items-center"
-            @click="modalRegisterPatient = true"
-          >
-            <i class="pi pi-user" />
-            <p>Cadastrar</p>
-          </Button>
-        </div>
-      </template>
-    </CardMain>
+        <card-main title="Consultas de amanhã">
+          <template #body>
+            <draggable
+              class="list-group"
+              tag="transition-group"
+              :component-data="{
+                tag: 'ul',
+                type: 'transition-group',
+                name: !drag ? 'flip-list' : null,
+              }"
+              v-model="cards2"
+              v-bind="dragOptions"
+              @start="drag = true"
+              @end="drag = false"
+              item-key="order"
+            >
+              <template #item="{ element }">
+                <li class="list-group-item">
+                  <i
+                    :class="
+                      element.fixed
+                        ? 'fa fa-anchor'
+                        : 'glyphicon glyphicon-pushpin'
+                    "
+                    @click="element.fixed = !element.fixed"
+                    aria-hidden="true"
+                  ></i>
+                  <Card
+                    class="m-0.5"
+                    :client="element.client"
+                    :type="element.type"
+                    :hour="element.hour"
+                  />
+                </li>
+              </template>
+            </draggable>
+          </template>
+        </card-main>
+      </div>
+
+      <card-main class="h-[155px]" title="Cadastro paciênte">
+        <template #body>
+          <div class="card flex-col">
+            <h3 class="text-sm font-semibold pt-2 mx-auto text-center md:px-4">
+              Cadastre agora o paciente de forma rápida.
+            </h3>
+
+            <Button
+              color="primary"
+              class="mx-auto my-2 flex gap-1 items-center"
+              @click="modalRegisterPatient = true"
+            >
+              <i class="pi pi-user" />
+              <p>Cadastrar</p>
+            </Button>
+          </div>
+        </template>
+      </card-main>
+    </div>
 
     <Modal v-if="modalRegisterPatient">
       <tempalte>

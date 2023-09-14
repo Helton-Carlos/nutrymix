@@ -4,6 +4,7 @@
   defineProps<{
     title: string;
     type: string;
+    height: number;
     series: string | number;
     chartOptions: any;
   }>()
@@ -12,16 +13,16 @@
 </script>
 
 <template>
-  <CardMain :title="title">
+  <card-main :title="title">
     <template #body>
       <div id="chart" class="card justify-center">
         <apexchart
           :type="type"
-          height="280"
+          height="220"
           :options="chartOptions"
           :series="series"
         ></apexchart>
       </div>
     </template>
-  </CardMain>
+  </card-main>
 </template>
