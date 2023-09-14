@@ -29,7 +29,7 @@
   </div>
   <transition name="fade" mode="out-in">
     <div
-      class="absolute z-10 top-0 right-0 min-w-full min-h-screen bg-secondary bg-opacity-75 transition-opacity"
+      class="absolute z-20 top-0 right-0 min-w-full min-h-screen bg-secondary bg-opacity-75 transition-opacity"
       v-if="xs && menuMobile"
     >
       <div class="sidebar-mobile">

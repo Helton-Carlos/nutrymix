@@ -30,7 +30,7 @@ body {
 }
 
 .header-nutry {
-  @apply bg-white w-full h-[55px] absolute top-0 z-20;
+  @apply bg-white w-full h-[55px] absolute top-0 z-50;
 }
 
 .sidebar-desktop {
