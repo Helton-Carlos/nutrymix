@@ -1,8 +1,9 @@
 import { defineConfig } from 'vitest/config';
+import { VitePWA } from 'vite-plugin-pwa'
 import vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [vue(), VitePWA()],
   resolve: {
     alias: [
       { find: "@/", replacement: "/src" },
