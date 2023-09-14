@@ -55,6 +55,6 @@
 
   .fade-enter-active,
   .fade-leave-active {
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease;
   }
 </style>
