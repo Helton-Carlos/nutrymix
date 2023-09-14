@@ -4,7 +4,7 @@
   import NameTitle from '@/components/NameTitle.vue'
   import Header from '@/layout/Header.vue'
   import Sidebar from '@/layout/Sidebar.vue'
-  import { breakpoints } from '@/use/breakpoints.use'
+  import { breakpoints } from './use/breakpoints.use'
 
   const route = useRoute()
   const { xs } = breakpoints()
