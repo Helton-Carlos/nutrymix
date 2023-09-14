@@ -17,7 +17,6 @@ export default defineConfig({
         theme_color: '#5278FF',
         background_color: '#FFF',
         display: 'standalone',
-        scope: '/',
         start_url: '/',
         name: 'Nutrymix',
         short_name: 'Nutrymix',
