@@ -161,7 +161,7 @@
           </template>
         </card-main>
 
-        <card-main title="Consultas de amanhã">
+        <card-main title="Consultas de amcard-mainanhã">
           <template #body>
             <draggable
               class="list-group"
