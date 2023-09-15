@@ -15,7 +15,7 @@
 
 <template>
   <div
-    class="absolute bottom-0 right-2 z-10 m-8 bg-error min-w-[150px] h-[70px] p-2 rounded-lg"
+    class="absolute bottom-0 right-2 z-50 m-8 bg-error min-w-[150px] h-[70px] p-2 rounded-lg"
     v-if="close"
   >
     <div class="flex items-center gap-4 text-white">

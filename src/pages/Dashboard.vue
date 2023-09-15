@@ -2,6 +2,7 @@
   import { ref, computed, watch } from 'vue'
   import type { ICards } from '../types/index.types'
   import { columnWeekCharts, columnYearCharts} from '../use/charts'
+  import { EMessages } from '../use/message'
   import axios from 'axios'
   import CardMain from '@/components/CardMain.vue'
   import Card from '@/components/Card.vue'
@@ -23,6 +24,8 @@
   const phone = ref<number>()
   const height = ref<number>()
   const pressure = ref<number>()
+
+  const { REGISTER_ERROR, REGISTER_TEXT_ERROR } = EMessages
 
   const dragOptions = computed(() => {
     return {
@@ -297,10 +300,10 @@
         </form>
       </tempalte>
     </Modal>
-
+    
     <Notify
-      title="Erro ao cadastrar."
-      text="Preencha os campos corretamente."
+      :title="REGISTER_ERROR"
+      :text="REGISTER_TEXT_ERROR"
       v-if="errorInput"
     >
       <template #icon>
