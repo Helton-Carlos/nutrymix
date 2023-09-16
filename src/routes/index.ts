@@ -26,7 +26,16 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       title: "Arquivos",
       subTitle: "Você possue esses arquivos",
-    }
+    },
+  },
+  {
+    path: "/file/:list",
+    name: "file-list",
+    component: () => import("../pages/FileList.vue"), 
+    meta: {
+      title: "file-list",
+      subTitle: "file-list",
+    },
   },
   {
     path: "/calendar",
