@@ -17,7 +17,7 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       title: "Cadastro de pacientes",
       subTitle: "Controle de clientes e usuário",
-    }
+    },
   },
   {
     path: "/file",
@@ -32,10 +32,6 @@ const routes: Array<RouteRecordRaw> = [
     path: "/file/:list",
     name: "file-list",
     component: () => import("../pages/FileList.vue"), 
-    meta: {
-      title: "file-list",
-      subTitle: "file-list",
-    },
   },
   {
     path: "/calendar",
