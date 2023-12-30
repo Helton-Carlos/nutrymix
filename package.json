@@ -16,12 +16,14 @@
     "@vueuse/core": "^10.4.0",
     "apexcharts": "^3.42.0",
     "axios": "^1.5.0",
+    "date-fns": "^2.30.0",
     "primeicons": "^6.0.1",
     "save-dev": "^0.0.1-security",
     "vue": "^3.3.4",
     "vue-router": "^4.0.13",
     "vue3-apexcharts": "^1.4.4",
-    "vuedraggable": "^4.1.0"
+    "vuedraggable": "^4.1.0",
+    "vuejs3-datepicker": "^1.0.19"
   },
   "devDependencies": {
     "@types/jest": "^29.5.3",
