@@ -68,6 +68,11 @@ const routes: Array<RouteRecordRaw> = [
       title: "Configuração",
       subTitle: "Deixe seu perfil ao seu estilo.",
     }
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: () => import("../pages/Login.vue"),
   }
 ];
 
@@ -75,5 +80,10 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.name !== 'login' ) next({ name: 'login' })
+  else next()
+})
 
 export default router;
