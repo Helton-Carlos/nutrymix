@@ -33,3 +33,9 @@ export interface IUser {
   pressure: number| undefined,
   diet: string
 }
+
+
+export interface ILogin {
+  email: string,
+  password: string
+}

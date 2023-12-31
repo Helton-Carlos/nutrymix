@@ -1,4 +1,17 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import { ref } from 'vue'
+  import { ILogin } from '../types/index.types'
+  import Input from '../components/Input.vue'
+
+  const register = ref<ILogin>({
+    email: '',
+    password: '',
+  })
+
+  function onsubmit() {
+    console.log(register.value)
+  }
+</script>
 
 <template>
   <section>
@@ -18,37 +31,29 @@
           >
             Sign in to your account
           </h1>
-          <form class="space-y-4 md:space-y-6" action="#">
-            <div>
-              <label
-                for="email"
-                class="block mb-2 text-sm font-medium text-black"
-                >Your email</label
-              >
-              <input
-                type="email"
-                name="email"
-                id="email"
-                class="input-on"
-                placeholder="name@company.com"
-                required
-              />
-            </div>
-            <div>
-              <label
-                for="password"
-                class="block mb-2 text-sm font-medium text-black"
-                >Password</label
-              >
-              <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="••••••••"
-                class="input-on"
-                required
-              />
-            </div>
+
+          <form
+            class="space-y-4 md:space-y-6"
+            action="#"
+            @submit.prevent="onsubmit"
+          >
+            <Input
+              label="Your email"
+              type="email"
+              :modelValue="register.email"
+              :error="false"
+              placeholder="name@company.com"
+              required
+            />
+
+            <Input
+              label="Your password"
+              type="password"
+              :modelValue="register.password"
+              :error="false"
+              placeholder="••••••••"
+              required
+            />
 
             <div class="flex items-center justify-between">
               <div class="flex items-start">
