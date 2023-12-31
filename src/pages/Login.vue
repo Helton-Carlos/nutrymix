@@ -1,14 +1,27 @@
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { ILogin } from '../types/index.types'
+  import { ISignIn, ISignUp } from '../types/index.types'
   import Input from '../components/Input.vue'
 
-  const register = ref<ILogin>({
+  const login = ref<boolean>(true)
+
+  const signIn = ref<ISignIn>({
     email: '',
     password: '',
   })
 
-  function onsubmit() {
+  const register = ref<ISignUp>({
+    email: '',
+    name: '',
+    password: '',
+    confirmPassword: '',
+  })
+
+  function onSubmit() {
+    console.log(signIn.value)
+  }
+
+  function onRegister() {
     console.log(register.value)
   }
 </script>
@@ -28,15 +41,88 @@
         <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
           <h1
             class="text-xl text-primary font-bold leading-tight tracking-tight md:text-2xl"
+            v-if="login"
           >
             Sign in to your account
+          </h1>
+
+          <h1
+            v-else
+            class="text-xl text-primary font-bold leading-tight tracking-tight md:text-2xl"
+          >
+            Register here
           </h1>
 
           <form
             class="space-y-4 md:space-y-6"
             action="#"
-            @submit.prevent="onsubmit"
+            @submit.prevent="onSubmit"
+            v-if="login"
           >
+            <Input
+              label="Your email"
+              type="email"
+              :modelValue="signIn.email"
+              :error="false"
+              placeholder="name@company.com"
+              required
+            />
+
+            <Input
+              label="Your password"
+              type="password"
+              :modelValue="signIn.password"
+              :error="false"
+              placeholder="••••••••"
+              required
+            />
+
+            <div class="flex items-center justify-between">
+              <div class="flex items-start">
+                <div class="flex items-center h-5">
+                  <input
+                    id="remember"
+                    aria-describedby="remember"
+                    type="checkbox"
+                    class="input-on"
+                    required
+                  />
+                </div>
+                <div class="ml-3 text-sm">
+                  <label for="remember" class="text-gray-dark"
+                    >Remember me</label
+                  >
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-primary">Sign in</button>
+
+            <p class="text-sm font-light text-gray-dark">
+              Don’t have an account yet?
+              <span
+                class="font-medium text-primary hover:underline"
+                @click="login = false"
+                >Sign up</span
+              >
+            </p>
+          </form>
+
+          <form
+            class="space-y-4 md:space-y-6"
+            action="#"
+            @submit.prevent="onRegister"
+            v-else
+          >
+            <Input
+              label="Your name"
+              type="text"
+              :modelValue="register.name"
+              :error="false"
+              placeholder="João Brito Souza"
+              required
+            />
+
             <Input
               label="Your email"
               type="email"
@@ -55,36 +141,25 @@
               required
             />
 
-            <div class="flex items-center justify-between">
-              <div class="flex items-start">
-                <div class="flex items-center h-5">
-                  <input
-                    id="remember"
-                    aria-describedby="remember"
-                    type="checkbox"
-                    class="input-on"
-                    required
-                  />
-                </div>
-                <div class="ml-3 text-sm">
-                  <label for="remember" class="text-primary-500"
-                    >Remember me</label
-                  >
-                </div>
-              </div>
-              <a
-                href="#"
-                class="text-sm font-medium text-primary-600 hover:underline"
-                >Forgot password?</a
+            <Input
+              label="Confirm password"
+              type="password"
+              :modelValue="register.confirmPassword"
+              :error="false"
+              placeholder="••••••••"
+              required
+            />
+
+            <div class="flex justify-center gap-5">
+              <button
+                class="font-semibold hover:underline"
+                @click="login = true"
               >
+                Cancelar
+              </button>
+
+              <button type="submit" class="btn-primary">Register</button>
             </div>
-            <button type="submit" class="btn-primary">Sign in</button>
-            <p class="text-sm font-light text-primary-500">
-              Don’t have an account yet?
-              <a href="#" class="font-medium text-primary-600 hover:underline"
-                >Sign up</a
-              >
-            </p>
           </form>
         </div>
       </div>
