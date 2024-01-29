@@ -1,29 +1,24 @@
 <script setup lang="ts">
-  import { ref } from 'vue'
-  import { ISignIn, ISignUp } from '../types/index.types'
-  import Input from '../components/Input.vue'
+  import { ref } from 'vue';
+  import Input from '../components/Input.vue';
+  import { Field, Form, ErrorMessage } from 'vee-validate';
+  import * as yup from 'yup';
 
-  const login = ref<boolean>(true)
+  const schema = yup.object({
+    email: yup.string().email().required(),
+    password: yup.string().required().min(6).required(),
+  });
 
-  const signIn = ref<ISignIn>({
-    email: '',
-    password: '',
-  })
+  const login = ref<boolean>(true);
 
-  const register = ref<ISignUp>({
-    email: '',
-    name: '',
-    password: '',
-    confirmPassword: '',
-  })
-
-  function onSubmit() {
-    console.log(signIn.value)
+  function onSubmit(values: any) {
+    console.log(values);
   }
 
-  function onRegister() {
-    console.log(register.value)
+  function onRegister(values: any) {
+    console.log(values);
   }
+
 </script>
 
 <template>
@@ -37,6 +32,7 @@
         <img class="w-8 h-8 mr-2" src="../assets/nutrymix.svg" alt="logo" />
         nutrymix
       </p>
+
       <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
         <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
           <h1
@@ -53,29 +49,29 @@
             Register here
           </h1>
 
-          <form
+          <Form 
             class="space-y-4 md:space-y-6"
-            action="#"
-            @submit.prevent="onSubmit"
+            v-slot="{ errors }"
+            :validation-schema="schema"
+            @submit="onSubmit"
             v-if="login"
           >
-            <Input
-              label="Your email"
-              type="email"
-              :modelValue="signIn.email"
-              :error="false"
-              placeholder="name@company.com"
-              required
-            />
 
-            <Input
-              label="Your password"
-              type="password"
-              :modelValue="signIn.password"
-              :error="false"
-              placeholder="••••••••"
-              required
+            <Field  
+              :class="errors.email ? 'input-off' : 'input-on'"  
+              name="email" 
+              type="email" 
+              placeholder="name@company.com"
             />
+            <ErrorMessage class="text-error" name="email" />
+
+            <Field  
+              :class="errors.password ? 'input-off' : 'input-on'"  
+              name="password" 
+              type="password"
+              placeholder="••••••••"
+            />
+            <ErrorMessage class="text-error" name="password"  />
 
             <div class="flex items-center justify-between">
               <div class="flex items-start">
@@ -106,49 +102,38 @@
                 >Sign up</span
               >
             </p>
-          </form>
+          </Form>
 
-          <form
+          <Form
             class="space-y-4 md:space-y-6"
-            action="#"
-            @submit.prevent="onRegister"
+            v-slot="{ errors }"
+            :validation-schema="schema"
+            @submit="onRegister"
             v-else
           >
-            <Input
-              label="Your name"
+            <Field  
+              :class="errors.email ? 'input-off' : 'input-on'"  
+              name="text" 
               type="text"
-              :modelValue="register.name"
-              :error="false"
               placeholder="João Brito Souza"
-              required
             />
+            <ErrorMessage class="text-error" name="text" />
 
-            <Input
-              label="Your email"
-              type="email"
-              :modelValue="register.email"
-              :error="false"
+            <Field  
+              :class="errors.email ? 'input-off' : 'input-on'"  
+              name="email" 
+              type="email" 
               placeholder="name@company.com"
-              required
             />
+            <ErrorMessage class="text-error" name="email" />
 
-            <Input
-              label="Your password"
+            <Field  
+              :class="errors.password ? 'input-off' : 'input-on'"  
+              name="password" 
               type="password"
-              :modelValue="register.password"
-              :error="false"
               placeholder="••••••••"
-              required
             />
-
-            <Input
-              label="Confirm password"
-              type="password"
-              :modelValue="register.confirmPassword"
-              :error="false"
-              placeholder="••••••••"
-              required
-            />
+            <ErrorMessage class="text-error" name="password" />
 
             <div class="flex justify-center gap-5">
               <button
@@ -160,7 +145,7 @@
 
               <button type="submit" class="btn-primary">Register</button>
             </div>
-          </form>
+          </Form>
         </div>
       </div>
     </div>

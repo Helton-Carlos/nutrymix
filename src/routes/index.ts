@@ -82,10 +82,9 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  console.log(from);
+  if (to.name !== 'login' && from ) next({ name: 'login' })
   
-  if (to.name !== 'login' ) next({ name: 'login' })
-  else next()
+  next()
 })
 
 export default router;
