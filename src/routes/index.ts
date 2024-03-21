@@ -82,9 +82,13 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.name !== 'login' && from ) next({ name: 'login' })
+  let getLocal = localStorage.getItem('user-store');
   
-  next()
+  if ( getLocal ) {
+    return next();
+  }
+
+  next({ name: 'login' })
 })
 
 export default router;

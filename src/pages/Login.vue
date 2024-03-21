@@ -1,22 +1,36 @@
 <script setup lang="ts">
   import { ref } from 'vue';
+  import { useRouter } from 'vue-router';
   import Input from '../components/Input.vue';
   import { Field, Form, ErrorMessage } from 'vee-validate';
   import * as yup from 'yup';
+  import { useStorage } from '@vueuse/core'
 
   const schema = yup.object({
     email: yup.string().email().required(),
     password: yup.string().required().min(6).required(),
   });
 
+  const router = useRouter();
   const login = ref<boolean>(true);
+  const NAME_LOCAL = ref<string>('user-store');
 
-  function onSubmit(values: any) {
-    console.log(values);
+  function onSubmit(data: any) {
+    let getLocal = localStorage.getItem(NAME_LOCAL.value);
+
+    if(getLocal) {
+      let {email, password} = JSON.parse(getLocal);
+      
+      if(email === data.email && password === data.password) {
+        router.push({ name: 'dashboard' })
+      }
+    }
   }
 
-  function onRegister(values: any) {
-    console.log(values);
+  function onRegister(data: string) {
+    useStorage(NAME_LOCAL.value, data)
+
+    login.value = true
   }
 
 </script>
@@ -113,7 +127,7 @@
           >
             <Field  
               :class="errors.email ? 'input-off' : 'input-on'"  
-              name="text" 
+              name="name" 
               type="text"
               placeholder="João Brito Souza"
             />
@@ -143,7 +157,9 @@
                 Cancelar
               </button>
 
-              <button type="submit" class="btn-primary">Register</button>
+              <button class="btn-primary">
+                Register
+              </button>
             </div>
           </Form>
         </div>

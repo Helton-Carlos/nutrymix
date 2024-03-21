@@ -14,7 +14,13 @@
 
 <template>
   <div class="text-left">
-    <label v-if="label" data-test="label">{{ label }}</label>
+    <label 
+      v-if="label" 
+      :for="label"
+      data-test="label" 
+    >
+      {{ label }}
+    </label>
     
     <input
       data-test="input"
