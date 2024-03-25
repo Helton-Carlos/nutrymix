@@ -81,14 +81,14 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeResolve(async (to, from, next) => {
   let getLocal = localStorage.getItem('user-store');
   
-  if ( getLocal ) {
-    return next();
+  if (!getLocal && to.path === '/') {
+    next('/login');
+  } else {
+    next();
   }
-
-  next({ name: 'login' })
-})
+});
 
 export default router;

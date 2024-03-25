@@ -1,35 +1,32 @@
 <script setup lang="ts">
-  import { ref } from 'vue'
-  import { useRoute } from 'vue-router'
-  import NameTitle from '@/components/NameTitle.vue'
-  import Header from '@/layout/Header.vue'
-  import Sidebar from '@/layout/Sidebar.vue'
-  import { breakpoints } from './use/breakpoints.use'
-  import Login from './pages/Login.vue'
+import { ref, computed } from 'vue'
+import { useRoute } from 'vue-router'
+import NameTitle from '@/components/NameTitle.vue'
+import Header from '@/layout/Header.vue'
+import Sidebar from '@/layout/Sidebar.vue'
+import { breakpoints } from './use/breakpoints.use'
+import Login from './pages/Login.vue'
 
-  const route = useRoute()
-  const { xs } = breakpoints()
-  const login = ref<boolean>(false)
+const route = useRoute()
+const { xs } = breakpoints()
 
-  const menuMobile = ref<boolean>(false)
+const menuMobile = ref<boolean>(false)
 
-  function openSidebar() {
-    menuMobile.value = !menuMobile.value
-  }
+function openSidebar() {
+  menuMobile.value = !menuMobile.value
+}
 
-  function closeSidebar() {
-    menuMobile.value = false
-  }
+function closeSidebar() {
+  menuMobile.value = false
+}
 
-  function goBack() {
-    history.back()
-  }
+function goBack() {
+  history.back()
+}
 
-  function getLoginPage() {
-    if (route.name !== 'login') login.value = true
-  }
-
-  getLoginPage()
+const login = computed(()=> {
+   if(route.name === 'login') return true;
+});
 </script>
 
 <template>
@@ -45,10 +42,12 @@
             <NameTitle v-if="route.meta.title">
               <template #title>
                 <span class="bg-primary rounded-full pr-1 mr-1"></span>
+
                 <span class="text-base font-bold capitalize">{{
                   route.meta.title
                 }}</span>
               </template>
+
               <template #subTitle>
                 <p class="text-sm">{{ route.meta.subTitle }}</p>
               </template>
@@ -66,14 +65,14 @@
         </div>
         <div class="m-4">
           <transition name="fade" mode="out-in">
-            <router-view></router-view>
+            <router-view />
           </transition>
         </div>
       </div>
     </div>
   </div>
 
-  <Login v-else />
+  <Login v-else/>
 </template>
 
 <style scoped>
