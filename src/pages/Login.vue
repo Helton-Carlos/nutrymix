@@ -27,7 +27,7 @@
     }
   }
 
-  function onRegister(data: string) {
+  function onRegister(data: any) {
     useStorage(NAME_LOCAL.value, data)
 
     login.value = true
