@@ -1,29 +1,29 @@
 <script setup lang="ts">
-  import { useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 
-  const router = useRouter()
+const router = useRouter()
 
-  const listFile = [
-    {
-      icon: 'pi-user',
-      title: 'pacientes',
-      context: 'Veja tudo sobre seus cuidados com a paciente.',
-    },
-    {
-      icon: 'pi-info-circle',
-      title: 'dietas',
-      context: 'Tire suas duvidas sobre cada tipo de dieta para seu paciente.',
-    },
-    {
-      icon: 'pi-briefcase',
-      title: 'negócios',
-      context: 'Veja gráficos e organização do seu negócios.',
-    },
-  ]
+const listFile = [
+  {
+    icon: 'pi-user',
+    title: 'pacientes',
+    context: 'Veja tudo sobre seus cuidados com a paciente.',
+  },
+  {
+    icon: 'pi-info-circle',
+    title: 'dietas',
+    context: 'Tire suas duvidas sobre cada tipo de dieta para seu paciente.',
+  },
+  {
+    icon: 'pi-briefcase',
+    title: 'negócios',
+    context: 'Veja gráficos e organização do seu negócios.',
+  },
+];
 
-  function getList(name: string) {
-    router.push({ path: `/file/${name}` })
-  }
+function getList(name: string) {
+  router.push({ path: `/file/${name}` })
+}
 </script>
 
 <template>

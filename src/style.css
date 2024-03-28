@@ -22,7 +22,7 @@ body {
 }
 
 .card {
-  @apply bg-white flex items-start;
+  @apply bg-white w-full flex flex-col my-2 p-4 gap-4 rounded-lg;
 }
 
 .card-main {

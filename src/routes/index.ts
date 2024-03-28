@@ -70,6 +70,15 @@ const routes: Array<RouteRecordRaw> = [
     }
   },
   {
+    path: "/register-patient",
+    name: "registerPatient",
+    component: () => import("../pages/RegisterPatient.vue"),
+    meta: {
+      title: "Registre o paciente",
+      subTitle: "Grave os dados do seu paciente.",
+    }
+  },
+  {
     path: "/login",
     name: "login",
     component: () => import("../pages/Login.vue"),

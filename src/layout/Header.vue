@@ -7,8 +7,7 @@ const { getStorageUser, deleteStorageUser } = useStorageUser();
 const router = useRouter();
 
 const name = getStorageUser?.name;
-
-const itemMenu = ref<boolean>(false)
+const itemMenu = ref<boolean>(false);
 
 const menu = [
   { name: 'Your Profile', path: 'profile' },

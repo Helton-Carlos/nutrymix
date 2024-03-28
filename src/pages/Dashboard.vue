@@ -1,153 +1,64 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
-import axios from 'axios'
-import Modal from '@/components/Modal.vue'
-import Input from '@/components/Input.vue'
-import Button from '@/components/Button.vue'
+import { computed } from 'vue';
+import { useRouter } from 'vue-router';
 
-const modalRegisterPatient = ref<boolean>(false)
-const errorInput = ref<boolean>(false)
+const router = useRouter();
 
-const name = ref<string>('')
-const email = ref<string>('')
-const age = ref<number>()
-const size = ref<number>()
-const phone = ref<number>()
-const height = ref<number>()
-const pressure = ref<number>()
-
-function saveRegister() {
-  if (
-    name.value &&
-    email.value &&
-    age.value &&
-    size.value &&
-    phone.value &&
-    height.value &&
-    pressure.value
-  ) {
-    axios
-      .post('/api/users', {
-        name,
-        email,
-        age,
-        size,
-        phone,
-        height,
-        pressure,
-      })
-      .then((response) => {
-        errorInput.value = false
-
-        if (response) return (modalRegisterPatient.value = false)
-      })
-      .catch((error) => {
-        console.error(error)
-      })
-  } else {
-    errorInput.value = true
-  }
+function addPatient() {
+  router.push({ name: 'registerPatient'})
 }
 
-function cleanErro() {
-  errorInput.value = false
-}
+const dataToday = computed(()=> {
+  let today = new Date();
 
-watch(name, cleanErro)
+  let day = today.getDate().toString().padStart(2, '0'); 
+  let month = (today.getMonth() + 1).toString().padStart(2, '0'); 
+  let year = today.getFullYear();
+
+  return day + '/' + month + '/' + year;
+})
 </script>
 
 <template>
-  <div class="flex flex-col flex-wrap gap-4">
-    <div class="card flex-col">
-      <h3 class="text-sm font-semibold pt-2 mx-auto text-center md:px-4">
-        Pré-cadastro de pacientes
-      </h3>
+  <div class="flex flex-wrap">
+    <div class="card">
+      <div class="flex justify-between items-center">
+        <div>
+          <h2 class="font-medium">Próximas consultas:</h2>
+          <p>Veja suas consultas do dia.</p>
+        </div>
 
-      <Button
-        color="primary"
-        class="mx-auto my-2 flex gap-1 items-center"
-        @click="modalRegisterPatient = true"
-      >
-        <i class="pi pi-user" />
-        <p>Cadastrar</p>
-      </Button>
+        <div>
+          <button 
+            class="bg-primary text-white w-[40px] h-[40px] font-bold text-xl hover:bg-primary-clear"
+            @click="addPatient"
+          >
+            +
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <hr class="py-1 text-gray">
+        <p class="text-black text-center">
+          Você não possue consultas para hoje: {{ dataToday }}
+        </p>
+      </div>
     </div>
 
-    <Modal v-if="modalRegisterPatient">
-      <tempalte>
-        <form class="flex flex-col p-4" @submit.prevent="saveRegister">
-          <Input
-            type="text"
-            label="Nome"
-            placeholder="Laura Carla Brito"
-            :error="errorInput"
-            v-model:modelValue="name"
-          />
+    <div class="card">
+      <div class="flex justify-between items-center">
+        <div>
+          <h2 class="font-medium">Atendimentos de hoje:</h2>
+          <p>Barra de progresso.</p>
+        </div>
+      </div>
 
-          <Input
-            type="email"
-            label="E-mail"
-            placeholder="lauracarla@gmail.com"
-            :error="errorInput"
-            v-model:modelValue="email"
-          />
+        <div class="bg-gray-dark rounded-full h-2.5 ">
+          <canvas class="bg-primary h-2.5 rounded-full" style="width: 40%" />
+        </div>
 
-          <Input
-            type="number"
-            label="Numero"
-            placeholder="(75) 3281-4022"
-            :error="errorInput"
-            v-model:modelValue="phone"
-          />
-
-          <div class="flex gap-4">
-            <Input
-              type="number"
-              label="Idade"
-              placeholder="14"
-              :error="errorInput"
-              v-model:modelValue="age"
-            />
-            <Input
-              type="number"
-              label="Peso"
-              placeholder="77,14"
-              :error="errorInput"
-              v-model:modelValue="size"
-            />
-          </div>
-
-          <div class="flex gap-4">
-            <Input
-              type="number"
-              label="Altura"
-              placeholder="1,90"
-              :error="errorInput"
-              v-model:modelValue="height"
-            />
-            <Input
-              type="number"
-              label="Pressão arterial"
-              placeholder="12,80"
-              :error="errorInput"
-              v-model:modelValue="pressure"
-            />
-          </div>
-
-          <Button color="primary" class="w-full my-4" type="submit">
-            <i class="pi pi-save" />
-            Registar
-          </Button>
-
-          <Button
-            class="w-full hover:text-primary"
-            @click="modalRegisterPatient = false"
-          >
-            <i class="pi pi-times" />
-            Cancel
-          </Button>
-        </form>
-      </tempalte>
-    </Modal>
+        <p class="font-bold text-gray-dark py-1 text-base text-center">2/5</p>
+    </div>
   </div>
 </template>

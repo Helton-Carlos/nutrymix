@@ -1,38 +1,36 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
-  import { useRouter } from 'vue-router';
-  import { useStorage } from '@vueuse/core'
-  import { useStorageUser } from '../store/user.ts'
-  import Input from '../components/Input.vue';
-  import { Field, Form, ErrorMessage } from 'vee-validate';
-  import * as yup from 'yup';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { useStorage } from '@vueuse/core'
+import { useStorageUser } from '../store/user.ts'
+import { Field, Form, ErrorMessage } from 'vee-validate';
+import * as yup from 'yup';
 
-  const schema = yup.object({
-    email: yup.string().email().required(),
-    password: yup.string().required().min(6).required(),
-  });
+const schema = yup.object({
+  email: yup.string().email().required(),
+  password: yup.string().required().min(6).required(),
+});
 
-  const { NAME_LOCAL, getStorageUser } = useStorageUser();
-  
-  const router = useRouter();
-  const login = ref<boolean>(true);
+const { NAME_LOCAL, getStorageUser } = useStorageUser();
 
-  function onSubmit(data: any) {
-    if(getStorageUser) {
-      let {email, password} = getStorageUser;
-      
-      if(email === data.email && password === data.password) {
-        router.push({ name: 'dashboard' })
-      }
+const router = useRouter();
+const login = ref<boolean>(true);
+
+function onSubmit(data: any) {
+  if(getStorageUser) {
+    let {email, password} = getStorageUser;
+    
+    if(email === data.email && password === data.password) {
+      router.push({ name: 'dashboard' })
     }
   }
+}
 
-  function onRegister(data: any) {
-    useStorage(NAME_LOCAL, data)
+function onRegister(data: any) {
+  useStorage(NAME_LOCAL, data)
 
-    login.value = true
-  }
-
+  login.value = true
+}
 </script>
 
 <template>
@@ -87,26 +85,7 @@
             />
             <ErrorMessage class="text-error" name="password"  />
 
-            <div class="flex items-center justify-between">
-              <div class="flex items-start">
-                <div class="flex items-center h-5">
-                  <input
-                    id="remember"
-                    aria-describedby="remember"
-                    type="checkbox"
-                    class="input-on"
-                    required
-                  />
-                </div>
-                <div class="ml-3 text-sm">
-                  <label for="remember" class="text-gray-dark"
-                    >Remember me</label
-                  >
-                </div>
-              </div>
-            </div>
-
-            <button type="submit" class="btn-primary">Sign in</button>
+            <button type="submit" class="btn-primary block">Sign in</button>
 
             <p class="text-sm font-light text-gray-dark">
               Don’t have an account yet?

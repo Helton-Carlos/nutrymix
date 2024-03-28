@@ -54,15 +54,16 @@ const login = computed(()=> {
             </NameTitle>
 
             <div
+            v-else
               class="flex m-4 items-center cursor-pointer hover:text-primary"
               @click="goBack"
-              v-else
             >
               <i class="pi pi-arrow-left pr-2" />
               <p class="font-bold">Voltar</p>
             </div>
           </div>
         </div>
+
         <div class="m-4">
           <transition name="fade" mode="out-in">
             <router-view />

@@ -3,6 +3,9 @@ import { VitePWA } from 'vite-plugin-pwa'
 import vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
+  server: {
+    port: 4000
+  },
   plugins: [
     vue(), 
     VitePWA({
