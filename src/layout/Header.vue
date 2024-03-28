@@ -1,18 +1,31 @@
 <script setup lang="ts">
-  import { ref } from 'vue'
+import { ref } from 'vue'
+import { useStorageUser } from '../store/user.ts'
+import {useRouter} from 'vue-router';
 
-  const name = ref<string>('John Smith')
-  const itemMenu = ref<boolean>(false)
+const { getStorageUser, deleteStorageUser } = useStorageUser();
+const router = useRouter();
 
-  const menu = [
-    { name: 'Your Profile', path: 'profile' },
-    { name: 'Settings', path: 'config' },
-    { name: 'Sign out', path: 'singIn' },
-  ]
+const name = getStorageUser?.name;
 
-  function openMenu() {
-    itemMenu.value = !itemMenu.value
-  }
+const itemMenu = ref<boolean>(false)
+
+const menu = [
+  { name: 'Your Profile', path: 'profile' },
+  { name: 'Settings', path: 'config' },
+  { name: 'Sign out', path: 'login' },
+]
+
+function openMenu() {
+  itemMenu.value = !itemMenu.value
+}
+
+function onPath(pathName: string) {
+  if(pathName === 'login') {
+    deleteStorageUser();
+    router.push({ name : pathName})
+  };
+}
 </script>
 
 <template>
@@ -64,6 +77,7 @@
             id="user-menu-item-0"
             v-for="item in menu"
             :key="item.name"
+            @click="onPath(item.path)"
             >{{ item.name }}</a
           >
         </div>
