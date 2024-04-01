@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
+import Charts from '@/components/Charts.vue'
+import { columnWeekCharts } from '../use/charts';
 
 const router = useRouter();
 
@@ -60,5 +62,12 @@ const dataToday = computed(()=> {
 
         <p class="font-bold text-gray-dark py-1 text-base text-center">2/5</p>
     </div>
+
+    <Charts 
+        type="bar"
+        title="Gráfico semanal:"
+        :series="columnWeekCharts().series" 
+        :chartOptions="columnWeekCharts().chartOptions"
+      />
   </div>
 </template>

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-  import CardMain from './CardMain.vue'
-
   defineProps<{
     title: string;
     type: string;
@@ -13,16 +11,16 @@
 </script>
 
 <template>
-  <card-main :title="title">
-    <template #body>
-      <div id="chart" class="card justify-center">
-        <apexchart
-          :type="type"
-          height="220"
-          :options="chartOptions"
-          :series="series"
-        ></apexchart>
-      </div>
-    </template>
-  </card-main>
+  <div id="chart" class="card justify-center">
+    <h2 class="font-medium">{{ title }}</h2>
+    
+    <div class="lg:mx-auto">
+      <apexchart
+        :type="type"
+        height="220"
+        :options="chartOptions"
+        :series="series"
+      ></apexchart>
+    </div>
+  </div>
 </template>
