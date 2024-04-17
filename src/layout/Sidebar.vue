@@ -8,12 +8,12 @@
 
   const router = [
     { path: '/', icon: 'home', name: 'dashboard' },
-    { path: '/user', icon: 'user', name: 'user' },
-    { path: '/file', icon: 'th-large', name: 'file' },
-    { path: '/calendar', icon: 'calendar-plus', name: 'calendar' },
-    { path: '/historic', icon: 'filter', name: 'historic' },
-    { path: '/contact', icon: 'file-o', name: 'contact' },
-    { path: '/config', icon: 'cog', name: 'config' },
+    { path: '/user', icon: 'user', name: 'usuário' },
+    { path: '/file', icon: 'th-large', name: 'arquivo' },
+    { path: '/calendar', icon: 'calendar-plus', name: 'agenda' },
+    { path: '/historic', icon: 'filter', name: 'histórico' },
+    { path: '/contact', icon: 'file-o', name: 'contrato' },
+    { path: '/config', icon: 'cog', name: 'configuração' },
   ]
 </script>
 

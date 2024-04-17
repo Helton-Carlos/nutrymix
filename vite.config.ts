@@ -9,11 +9,6 @@ export default defineConfig({
   plugins: [
     vue(), 
     VitePWA({
-      workbox: {
-        globPatterns: [
-          '**/*.{js,css,html,ico,png,svg}',
-        ],
-      },
       manifest: { 
         theme_color: '#5278FF',
         background_color: '#FFF',
@@ -50,9 +45,14 @@ export default defineConfig({
             type: 'image/png',
           },
         ],
-      }
+      },
+      workbox: {
+        globPatterns: [
+          '**/*.{js,css,html,ico,png,svg}',
+        ],
+      },
     })
-],
+  ],
   resolve: {
     alias: [
       { find: "@/", replacement: "/src" },
@@ -61,6 +61,7 @@ export default defineConfig({
       { find: "@/components", replacement: "/src/components" },
       { find: "@/types", replacement: "/src/types" },
       { find: "@/use", replacement: "/src/use"},
+      { find: "@/server", replacement: "/src/server"},
       { find: "@/store", replacement: "/src/store"}
     ],
   },

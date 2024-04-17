@@ -38,37 +38,38 @@ function onRegister(data: any) {
     <div
       class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0"
     >
-      <p
+      <h1
         class="flex items-center mb-6 text-2xl text-primary font-semibold font-mono capitalize"
       >
         <img class="w-8 h-8 mr-2" src="../assets/nutrymix.svg" alt="logo" />
         nutrymix
-      </p>
+      </h1>
 
       <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
         <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-          <h1
+          <h2
             class="text-xl text-primary font-bold leading-tight tracking-tight md:text-2xl"
             v-if="login"
           >
-            Sign in to your account
-          </h1>
+            Faça seu login
+          </h2>
 
-          <h1
+          <h2
             v-else
             class="text-xl text-primary font-bold leading-tight tracking-tight md:text-2xl"
           >
-            Register here
-          </h1>
+            Crie sua conta
+          </h2>
 
           <Form 
-            class="space-y-4 md:space-y-6"
+            class="flex flex-col space-y-4 md:space-y-6"
             v-slot="{ errors }"
             :validation-schema="schema"
             @submit="onSubmit"
             v-if="login"
           >
 
+            <label for="email">Seu e-mail</label>
             <Field  
               :class="errors.email ? 'input-off' : 'input-on'"  
               name="email" 
@@ -77,6 +78,7 @@ function onRegister(data: any) {
             />
             <ErrorMessage class="text-error" name="email" />
 
+            <label for="password">Sua senha</label>
             <Field  
               :class="errors.password ? 'input-off' : 'input-on'"  
               name="password" 
@@ -85,25 +87,26 @@ function onRegister(data: any) {
             />
             <ErrorMessage class="text-error" name="password"  />
 
-            <button type="submit" class="btn-primary block">Sign in</button>
+            <button type="submit" class="btn-primary block">Entrar</button>
 
             <p class="text-sm font-light text-gray-dark">
-              Don’t have an account yet?
+              Ainda não tem sua conta?
               <span
                 class="font-medium text-primary hover:underline"
                 @click="login = false"
-                >Sign up</span
+                >Cadastra-se</span
               >
             </p>
           </Form>
 
           <Form
-            class="space-y-4 md:space-y-6"
+            class="flex flex-col space-y-4 md:space-y-6"
             v-slot="{ errors }"
             :validation-schema="schema"
             @submit="onRegister"
             v-else
           >
+            <label for="name">* Seu nome</label>
             <Field  
               :class="errors.email ? 'input-off' : 'input-on'"  
               name="name" 
@@ -112,6 +115,7 @@ function onRegister(data: any) {
             />
             <ErrorMessage class="text-error" name="text" />
 
+            <label for="company">* Sua empresa</label>
             <Field  
               :class="errors.email ? 'input-off' : 'input-on'"  
               name="company" 
@@ -120,6 +124,7 @@ function onRegister(data: any) {
             />
             <ErrorMessage class="text-error" name="text" />
 
+            <label for="email">* Seu e-mail</label>
             <Field  
               :class="errors.email ? 'input-off' : 'input-on'"  
               name="email" 
@@ -128,6 +133,7 @@ function onRegister(data: any) {
             />
             <ErrorMessage class="text-error" name="email" />
 
+            <label for="password">* Sua senha</label>
             <Field  
               :class="errors.password ? 'input-off' : 'input-on'"  
               name="password" 
@@ -145,7 +151,7 @@ function onRegister(data: any) {
               </button>
 
               <button class="btn-primary">
-                Register
+                Salvar
               </button>
             </div>
           </Form>

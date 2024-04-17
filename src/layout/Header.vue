@@ -10,9 +10,9 @@ const name = getStorageUser?.name;
 const itemMenu = ref<boolean>(false);
 
 const menu = [
-  { name: 'Your Profile', path: 'profile' },
-  { name: 'Settings', path: 'config' },
-  { name: 'Sign out', path: 'login' },
+  { name: 'Sua conta', path: 'profile' },
+  { name: 'Configuração', path: 'config' },
+  { name: 'Sair', path: 'login' },
 ]
 
 function openMenu() {

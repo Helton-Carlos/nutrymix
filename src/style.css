@@ -17,12 +17,16 @@ body {
   @apply bg-gray-light;
 }
 
+label {
+  @apply text-gray-dark font-bold;
+}
+
 .container {
   @apply w-5/6;
 }
 
 .card {
-  @apply bg-white w-full flex flex-col my-2 p-4 gap-4 rounded-lg;
+  @apply bg-white w-full flex flex-col m-2 p-4 gap-4 rounded-lg lg:w-[450px];
 }
 
 .card-main {
@@ -51,11 +55,11 @@ body {
 }
 
 .input-on {
-  @apply w-full my-1 block pl-5 py-2 text-sm text-gray-dark border border-gray-light rounded-lg bg-gray-light 
+  @apply w-full my-1 block pl-5 py-2 text-sm text-gray-dark border border-gray-light rounded-md bg-gray-light 
     focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40;
 }
 
 .input-off{
-  @apply w-full my-1 block pl-5 py-2 text-sm text-error border border-gray-light rounded-lg bg-gray-light 
+  @apply w-full my-1 block pl-5 py-2 text-sm text-error border border-gray-light rounded-md bg-gray-light 
     focus:border-error ring-error outline-none ring ring-opacity-40;
 }
