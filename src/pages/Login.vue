@@ -1,33 +1,80 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { useStorage } from '@vueuse/core'
-import { useStorageUser } from '../store/user.ts'
+import { api } from '../server/api.ts';
 import { Field, Form, ErrorMessage } from 'vee-validate';
+import { EMessages } from '../use/message'
+import { useStorageUser } from '../store/user.ts'
 import * as yup from 'yup';
+import Notify from '@/components/Notify.vue';
+
+const { REGISTER_ERROR, REGISTER_TEXT_ERROR } = EMessages;
+
+const { setStorageUser } = useStorageUser();
 
 const schema = yup.object({
   email: yup.string().email().required(),
   password: yup.string().required().min(6).required(),
 });
 
-const { NAME_LOCAL, getStorageUser } = useStorageUser();
-
 const router = useRouter();
 const login = ref<boolean>(true);
 
-function onSubmit(data: any) {
-  if(getStorageUser) {
-    let {email, password} = getStorageUser;
-    
-    if(email === data.email && password === data.password) {
-      router.push({ name: 'dashboard' })
-    }
+const errorInput = ref<boolean>(false);
+
+async function onSubmit(data: any) {
+  try {
+   await api.get('/users')
+    .then((response) => {
+      const { users } = response.data;
+      
+      let user = users.find((item: { email: string; }) => item.email === data.email);
+      
+      if(user) {
+        const { id, name, email, company} = user;
+      
+        const userStorage = {
+          id, 
+          name, 
+          email,
+          company
+        }
+
+        setStorageUser(userStorage);
+
+        router.push({ name: 'dashboard'})
+      } else {
+        errorInput.value = true;
+
+        setTimeout(() => {
+          errorInput.value = false;
+        }, 7000);
+      }
+    })
+  } catch(error) {
+    errorInput.value = true;
+
+    setTimeout(() => {
+      errorInput.value = false;
+    }, 7000);
   }
 }
 
-function onRegister(data: any) {
-  useStorage(NAME_LOCAL, data)
+async function onRegister(data: any) {
+  try {
+    await api.post('/users', {
+      name: data.name,
+      email: data.email,
+      company: data.company,
+      password: data.password,
+    }).then(() => login.value = true);
+  } catch(error) {
+    errorInput.value = true;
+
+    setTimeout(() => {
+      errorInput.value = false;
+    }, 7000);
+  }
 
   login.value = true
 }
@@ -106,7 +153,7 @@ function onRegister(data: any) {
             @submit="onRegister"
             v-else
           >
-            <label for="name">* Seu nome</label>
+            <label for="name">Seu nome *</label>
             <Field  
               :class="errors.email ? 'input-off' : 'input-on'"  
               name="name" 
@@ -115,7 +162,7 @@ function onRegister(data: any) {
             />
             <ErrorMessage class="text-error" name="text" />
 
-            <label for="company">* Sua empresa</label>
+            <label for="company">Sua empresa *</label>
             <Field  
               :class="errors.email ? 'input-off' : 'input-on'"  
               name="company" 
@@ -124,7 +171,7 @@ function onRegister(data: any) {
             />
             <ErrorMessage class="text-error" name="text" />
 
-            <label for="email">* Seu e-mail</label>
+            <label for="email">Seu e-mail *</label>
             <Field  
               :class="errors.email ? 'input-off' : 'input-on'"  
               name="email" 
@@ -133,7 +180,7 @@ function onRegister(data: any) {
             />
             <ErrorMessage class="text-error" name="email" />
 
-            <label for="password">* Sua senha</label>
+            <label for="password">Sua senha *</label>
             <Field  
               :class="errors.password ? 'input-off' : 'input-on'"  
               name="password" 
@@ -158,5 +205,16 @@ function onRegister(data: any) {
         </div>
       </div>
     </div>
+
+    <Notify
+      v-if="errorInput"
+      :title="REGISTER_ERROR"
+      :text="REGISTER_TEXT_ERROR"
+      :bgGround="false"
+    >
+      <template #icon>
+        <i class="pi pi-times-circle" />
+      </template>
+    </Notify>
   </section>
 </template>

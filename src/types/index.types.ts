@@ -15,6 +15,7 @@ export interface ICards {
 export interface INotify {
   title: string
   text: string
+  bgGround?: boolean
 }
 
 export interface ITable {

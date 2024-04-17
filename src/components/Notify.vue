@@ -1,28 +1,19 @@
 <script setup lang="ts">
-  import type { INotify } from '../types/index.types'
-  import { ref, onMounted } from 'vue'
+import type { INotify } from '../types/index.types';
 
-  defineProps<INotify>()
-
-  const close = ref<boolean>(true)
-
-  onMounted(() => {
-    setTimeout(() => {
-      close.value = false
-    }, 3000)
-  })
+defineProps<INotify>();
 </script>
 
 <template>
   <div
-    class="absolute bottom-0 right-2 z-50 m-8 bg-error min-w-[150px] h-[70px] p-2 rounded-lg"
-    v-if="close"
+    :class="bgGround ? 'bg-success':'bg-error'"
+    class="absolute bottom-0 right-2 z-50 min-w-[250px] h-[70px] m-8 p-2 px-4 rounded-lg"
   >
     <div class="flex items-center gap-4 text-white">
       <slot name="icon"></slot>
 
       <div class="text-left">
-        <p class="font-bold">{{ title }}</p>
+        <p class="font-medium">{{ title }}</p>
         <span>{{ text }}</span>
       </div>
     </div>

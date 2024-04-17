@@ -91,7 +91,7 @@ const router = createRouter({
 });
 
 router.beforeResolve(async (to, from, next) => {
-  let getLocal = localStorage.getItem('user-store');
+  let getLocal = localStorage.getItem('NU-USER');
   
   if (!getLocal && to.path === '/' && from.path) {
     next('/login');
