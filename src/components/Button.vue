@@ -10,7 +10,7 @@
 
 <template>
   <button
-    data-testid="btn-id"
+    data-test="btn-id"
     :class="{
       'btn-primary': color == 'primary',
       btn: color == 'null',

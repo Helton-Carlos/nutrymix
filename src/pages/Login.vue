@@ -134,11 +134,17 @@ async function onRegister(data: any) {
             />
             <ErrorMessage class="text-error" name="password"  />
 
-            <button type="submit" class="btn-primary block">Entrar</button>
+            <button 
+              type="submit" 
+              class="btn-primary block"
+            >
+              Entrar
+            </button>
 
             <p class="text-sm font-light text-gray-dark">
               Ainda não tem sua conta?
               <span
+                data-test="btn-account"
                 class="font-medium text-primary hover:underline"
                 @click="login = false"
                 >Cadastra-se</span
@@ -191,13 +197,17 @@ async function onRegister(data: any) {
 
             <div class="flex justify-center gap-5">
               <button
+              
                 class="font-semibold hover:underline"
                 @click="login = true"
               >
                 Cancelar
               </button>
 
-              <button class="btn-primary">
+              <button
+               data-test="btn-account-submit"
+               class="btn-primary"
+              >
                 Salvar
               </button>
             </div>
