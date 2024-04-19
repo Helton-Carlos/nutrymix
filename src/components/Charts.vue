@@ -3,11 +3,9 @@
     title: string;
     type: string;
     height: number;
-    series: string | number;
+    series?: string[] | number[];
     chartOptions: any;
   }>()
-
-  
 </script>
 
 <template>
@@ -17,7 +15,7 @@
     <div class="lg:mx-auto">
       <apexchart
         :type="type"
-        height="220"
+        :height="height"
         :options="chartOptions"
         :series="series"
       ></apexchart>

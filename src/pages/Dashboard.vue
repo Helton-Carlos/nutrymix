@@ -64,10 +64,11 @@ const dataToday = computed(()=> {
     </div>
 
     <Charts 
-        type="bar"
-        title="Gráfico semanal:"
-        :series="columnWeekCharts().series" 
-        :chartOptions="columnWeekCharts().chartOptions"
-      />
+      type="bar"
+      title="Gráfico semanal:"
+      :height="250"
+      :series="columnWeekCharts().series" 
+      :chartOptions="columnWeekCharts().chartOptions"
+    />
   </div>
 </template>
