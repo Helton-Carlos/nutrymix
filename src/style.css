@@ -26,15 +26,15 @@ label {
 }
 
 .card {
-  @apply bg-white w-full flex flex-col m-2 p-4 gap-4 rounded-lg lg:w-[450px];
+  @apply w-full bg-white flex flex-col p-4 gap-4 rounded-lg;
 }
 
 .card-main {
-  @apply w-full h-full bg-gray p-1 rounded-md md:w-[410px];
+  @apply w-full bg-gray p-4 gap-4 rounded-lg;
 }
 
 .header-nutry {
-  @apply bg-white w-full h-[55px] absolute top-0 z-50;
+  @apply w-full bg-white h-[55px] absolute top-0 z-50;
 }
 
 .sidebar-desktop {

@@ -1,6 +1,6 @@
 export interface IInput {
   label?: string
-  placeholder: string
+  placeholder?: string
   type: string
   modelValue: string | number
   error?: boolean

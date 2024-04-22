@@ -33,7 +33,7 @@ const login = computed(()=> {
   <div v-if="!login">
     <Header @open-sidebar="openSidebar" />
 
-    <div class="flex">
+    <div>
       <Sidebar @close-menu="closeSidebar" :menuMobile="menuMobile" />
 
       <div :class="xs ? 'mt-14' : 'm-14'">

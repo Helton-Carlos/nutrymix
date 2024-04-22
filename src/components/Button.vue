@@ -3,9 +3,7 @@
     color?: string
   }>()
 
-  defineEmits<{
-    (e: 'onClick'): void
-  }>()
+  defineEmits<(e: 'onClick') => void>()
 </script>
 
 <template>

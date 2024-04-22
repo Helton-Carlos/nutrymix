@@ -161,7 +161,7 @@ async function onRegister(data: any) {
           >
             <label for="name">Seu nome *</label>
             <Field  
-              :class="errors.email ? 'input-off' : 'input-on'"  
+              :class="errors.name ? 'input-off' : 'input-on'"  
               name="name" 
               type="text"
               placeholder="Nome: João Brito Souza"
@@ -170,7 +170,7 @@ async function onRegister(data: any) {
 
             <label for="company">Sua empresa *</label>
             <Field  
-              :class="errors.email ? 'input-off' : 'input-on'"  
+              :class="errors.company ? 'input-off' : 'input-on'"  
               name="company" 
               type="text"
               placeholder="Empresa: NutriVida"

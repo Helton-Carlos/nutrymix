@@ -22,7 +22,7 @@ const dataToday = computed(()=> {
 </script>
 
 <template>
-  <div class="flex flex-wrap">
+  <div class="flex gap-4 flex-wrap">
     <div class="card">
       <div class="flex justify-between items-center">
         <div>
