@@ -28,6 +28,12 @@ export function makeServer({ environment = "development" } = {}) {
         return schema.users.create(attrs)
       });
 
+      this.post("/register", (schema: any, request) => {
+        let attrs = JSON.parse(request.requestBody);
+
+        return schema.users.create(attrs)
+      });
+
       this.get("/users", (schema: any) => {
         return schema.users.all();
       });

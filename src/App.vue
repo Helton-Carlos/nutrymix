@@ -1,18 +1,23 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import NameTitle from '@/components/NameTitle.vue'
 import Header from '@/layout/Header.vue'
 import Sidebar from '@/layout/Sidebar.vue'
 import { breakpoints } from './use/breakpoints.use'
 import Login from './pages/Login.vue'
 
-const route = useRoute()
-const { xs } = breakpoints()
+const route = useRoute();
+const router = useRouter();
+const { xs } = breakpoints();
 
 const menuMobile = ref<boolean>(false)
 
 function openSidebar() {
+  if(!xs.value) {
+    router.push({ name: 'dashboard'})
+  }
+  
   menuMobile.value = !menuMobile.value
 }
 
